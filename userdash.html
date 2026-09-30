@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Patient Dashboard | FertiCare Clinic</title>
+
+    <script src="tailwind.js"></script>
+    <style>
+        /* --- Refined Premium Green & Rich Brown Palette (matches index.html) --- */
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #1E293B;
+            --color-secondary-text: #475569;
+            --color-accent: #EC4899;
+            --color-accent-light: #3B82F6;
+            --color-border: #E2E8F0;
+            --color-hover: #FDF2F8;
+            --color-footer-bg: #0F172A;
+            --color-footer-text: #F1F5F9;
+        }
+        html[data-theme='dark'] {
+            --color-background: #000000;
+            --color-primary-text: #F1F5F9;
+            --color-secondary-text: #CBD5E1;
+            --color-accent: #EC4899;
+            --color-accent-light: #3B82F6;
+            --color-border: #334155;
+            --color-hover: #1E293B;
+            --color-footer-bg: #020617;
+            --color-footer-text: #F1F5F9;
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .border-border { border-color: var(--color-border); }
+        .bg-accent { background-color: var(--color-accent); }
+        .bg-accent-light { background-color: var(--color-accent-light); }
+
+        /* ── Typography ── */
+        h1, h2, h3, h4, h5, h6 { font-weight: 500 !important; }
+        p, .text-secondary-text { font-weight: 400 !important; }
+
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #EC4899 0%, #3B82F6 100%);
+        }
+
+        /* Nav Link Underline */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+        .nav-link.active { color: var(--color-accent) !important; }
+
+        /* DROPDOWN */
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+        html[dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        /* ── Button System ── */
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #EC4899 0%, #3B82F6 100%);
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(236,72,153,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(236,72,153,0.25);
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: var(--color-accent);
+            color: #000;
+        }
+
+        /* Dashboard Cards */
+        .dash-card {
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 1.25rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.04);
+        }
+        .dash-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 12px 24px -8px rgba(236, 72, 153, 0.12);
+        }
+
+        /* Sidebar Links */
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            color: var(--color-secondary-text);
+            transition: all 0.18s ease;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .sidebar-link:hover, .sidebar-link.active {
+            color: #FFFFFF;
+            background: linear-gradient(145deg, #EC4899, #3B82F6);
+        }
+        .sidebar-link:hover svg, .sidebar-link.active svg { color: white !important; }
+        .sidebar-link.logout:hover { background: #d13b3b; color: white; }
+
+        html[dir="rtl"] .sidebar-link { flex-direction: row-reverse; }
+        html[dir="rtl"] .ml-auto { margin-right: auto; margin-left: 0; }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .badge-active { background-color: #10B981; color: white; }
+        .badge-pending { background-color: #F59E0B; color: white; }
+        .badge-scheduled { background-color: #3B82F6; color: white; }
+        .badge-completed { background-color: #10B981; color: white; }
+        .badge-cancelled { background-color: #EF4444; color: white; }
+
+        .status-pulse {
+            width: 10px; height: 10px;
+            background-color: var(--color-accent);
+            border-radius: 9999px;
+            box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.5);
+            animation: pulse2 2s infinite;
+        }
+        @keyframes pulse2 {
+            70% { box-shadow: 0 0 0 6px rgba(236, 72, 153, 0); }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { height: 4px; width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: var(--color-border);
+            border-radius: 10px;
+        }
+
+        #mobile-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            position: fixed;
+            inset: 0;
+            z-index: 55;
+        }
+        #mobile-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .dash-section { display: block; }
+
+        .toggle-switch {
+            width: 48px; height: 24px;
+            border-radius: 9999px;
+            padding: 2px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .toggle-switch.active { background: var(--color-accent); }
+        .toggle-switch.inactive { background: var(--color-border); }
+        .toggle-switch .knob {
+            width: 20px; height: 20px;
+            background: white;
+            border-radius: 9999px;
+            transition: transform 0.2s;
+        }
+        .toggle-switch.active .knob { transform: translateX(24px); }
+        html[dir="rtl"] .toggle-switch.active .knob { transform: translateX(-24px); }
+
+        /* Progress bar */
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: var(--color-border);
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #EC4899, #3B82F6);
+            transition: width 0.3s ease;
+        }
+
+        /* Timeline */
+        .timeline-line {
+            position: absolute;
+            left: 19px;
+            top: 40px;
+            bottom: 0;
+            width: 2px;
+            background: var(--color-border);
+        }
+        html[dir="rtl"] .timeline-line { left: auto; right: 19px; }
+    </style>
+</head>
+<body class="antialiased bg-background h-screen overflow-hidden w-full">
+
+    <!-- TOP BAR -->
+    <header class="border-b border-border bg-background sticky top-0 z-50 w-full">
+        <div class="max-w-[1920px] mx-auto px-2 sm:px-6 lg:px-10 py-3 flex items-center justify-between gap-1 sm:gap-3">
+
+            <div class="flex items-center gap-1 sm:gap-3">
+                <button id="mobile-menu-toggle"
+                    class="xl:hidden p-1.5 sm:p-2 -ml-1 sm:-ml-2 rounded-xl hover:bg-hover transition text-primary-text"
+                    title="Open Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <a href="index.html" class="flex items-center gap-2 shrink-0">
+                    <i class="fa-solid fa-hand-holding-heart text-accent text-xl sm:text-2xl"></i>
+                    <span class="text-lg sm:text-2xl font-serif font-extrabold tracking-tight text-accent">FertiCare</span>
+                </a>
+            </div>
+
+            <div class="flex items-center gap-1 sm:gap-3 shrink-0 rtl:flex-row-reverse">
+                <div class="hidden md:flex items-center bg-hover rounded-full px-4 py-2 border border-border">
+                    <i class="fas fa-search text-secondary-text text-sm mr-2"></i>
+                    <input type="text" placeholder="Search appointments, results..." class="bg-transparent border-none outline-none text-sm w-40 lg:w-56 text-primary-text placeholder-secondary-text/50">
+                </div>
+
+                <button id="lang-toggle" class="p-1.5 sm:p-2 rounded-full hover:bg-hover transition text-primary-text" title="Toggle RTL/LTR">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                    </svg>
+                </button>
+
+                <button id="theme-toggle-user" class="p-1.5 sm:p-2 rounded-full hover:bg-hover transition text-primary-text">
+                    <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+
+                <div class="relative">
+                    <button class="p-1.5 sm:p-2 rounded-full hover:bg-hover transition text-primary-text relative">
+                        <i class="fas fa-bell"></i>
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                </div>
+
+                <div class="relative flex items-center gap-1.5 sm:gap-2 pl-1.5 sm:pl-3 border-l border-border rtl:border-l-0 rtl:border-r min-w-0">
+                    <div class="relative flex-shrink-0">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-accent/10 border border-accent flex items-center justify-center text-accent font-semibold">
+                            <i class="fas fa-user text-xs"></i>
+                        </div>
+                        <span class="absolute bottom-0 right-0 status-pulse"></span>
+                    </div>
+                    <div class="hidden sm:block text-sm">
+                        <p class="font-semibold leading-none">Sarah Mitchell</p>
+                        <p class="text-[10px] text-secondary-text mt-1 uppercase tracking-widest font-semibold">Patient</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-overlay" class="xl:hidden"></div>
+
+    <!-- MAIN LAYOUT -->
+    <main class="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-10 py-6 h-[calc(100vh-64px)] w-full relative">
+        <div class="flex flex-col xl:flex-row gap-4 lg:gap-6 xl:gap-10 h-full">
+
+            <!-- SIDEBAR -->
+            <aside id="sidebar-container"
+                class="fixed xl:static top-0 left-0 rtl:right-0 rtl:left-auto h-full xl:h-auto w-72 lg:w-72 xl:w-80 z-[60] xl:z-10 transform -translate-x-full rtl:translate-x-full xl:translate-x-0 xl:rtl:translate-x-0 transition-transform duration-300 ease-in-out bg-background xl:bg-transparent flex-shrink-0">
+                <div class="dash-card p-5 h-full overflow-y-auto custom-scrollbar border-r xl:border border-border xl:rounded-[1.25rem] rounded-none shadow-none xl:shadow-md">
+
+                    <!-- Mobile Sidebar Header -->
+                    <div class="flex xl:hidden justify-between items-center mb-6 px-2">
+                        <div class="flex items-center gap-2 text-accent">
+                            <i class="fas fa-bars-staggered"></i>
+                            <span class="text-xs font-medium uppercase tracking-widest">Patient Menu</span>
+                        </div>
+                        <button id="close-sidebar" class="p-2 hover:bg-hover rounded-lg text-primary-text">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <!-- Mobile Profile -->
+                    <div class="flex xl:hidden items-center gap-3 mb-6 px-2 pb-6 border-b border-border">
+                        <div class="relative flex-shrink-0">
+                            <div class="w-10 h-10 rounded-full bg-accent/10 border border-accent flex items-center justify-center text-accent font-semibold">
+                                <i class="fas fa-user text-sm"></i>
+                            </div>
+                            <span class="absolute bottom-0 right-0 status-pulse"></span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary-text leading-tight">Sarah Mitchell</p>
+                            <p class="text-[10px] text-secondary-text mt-0.5 uppercase tracking-widest font-medium">Patient · IVF Cycle 2</p>
+                        </div>
+                    </div>
+
+                    <nav class="flex flex-col gap-1">
+                        <p class="text-[10px] uppercase tracking-widest text-secondary-text font-medium mt-2 mb-2 px-2">My Journey</p>
+                        <a href="#" onclick="activateSection('overview')" data-section="overview" class="sidebar-link active">
+                            <i class="fas fa-house-chimney w-5"></i>
+                            <span>Dashboard Home</span>
+                        </a>
+                        <a href="#" onclick="activateSection('cycle')" data-section="cycle" class="sidebar-link">
+                            <i class="fas fa-heart-pulse w-5"></i>
+                            <span>Treatment Cycle</span>
+                        </a>
+                        <a href="#" onclick="activateSection('appointments')" data-section="appointments" class="sidebar-link">
+                            <i class="fas fa-calendar-check w-5"></i>
+                            <span>Appointments</span>
+                            <span class="ml-auto bg-accent/20 text-accent text-[10px] font-semibold px-1.5 py-0.5 rounded-full">2</span>
+                        </a>
+
+                        <p class="text-[10px] uppercase tracking-widest text-secondary-text font-medium mt-4 mb-2 px-2">Health Records</p>
+                        <a href="#" onclick="activateSection('labresults')" data-section="labresults" class="sidebar-link">
+                            <i class="fas fa-flask-vial w-5"></i>
+                            <span>Lab Results</span>
+                        </a>
+                        <a href="#" onclick="activateSection('medications')" data-section="medications" class="sidebar-link">
+                            <i class="fas fa-pills w-5"></i>
+                            <span>Medications</span>
+                        </a>
+
+                        <p class="text-[10px] uppercase tracking-widest text-secondary-text font-medium mt-4 mb-2 px-2">Account</p>
+                        <a href="#" onclick="activateSection('billing')" data-section="billing" class="sidebar-link">
+                            <i class="fas fa-receipt w-5"></i>
+                            <span>Billing History</span>
+                        </a>
+                        <a href="#" onclick="activateSection('support')" data-section="support" class="sidebar-link">
+                            <i class="fas fa-headset w-5"></i>
+                            <span>Help & Support</span>
+                        </a>
+                        <a href="#" onclick="activateSection('settings')" data-section="settings" class="sidebar-link">
+                            <i class="fas fa-sliders w-5"></i>
+                            <span>Settings</span>
+                        </a>
+                        <a href="#" onclick="activateSection('logout')" class="sidebar-link logout mt-2 text-red-500">
+                            <i class="fas fa-power-off w-5"></i>
+                            <span>Log Out</span>
+                        </a>
+                    </nav>
+
+                    <!-- Next Appointment Box -->
+                    <div class="mt-8 pt-4 border-t border-border">
+                        <p class="text-[10px] uppercase tracking-widest text-secondary-text font-medium mb-3 px-1">Next Appointment</p>
+                        <div class="bg-hover rounded-xl p-3">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-2 h-2 rounded-full bg-accent"></div>
+                                <span class="text-xs font-semibold">Confirmed</span>
+                            </div>
+                            <p class="text-xs font-semibold text-primary-text">Follicle Monitoring Scan</p>
+                            <p class="text-[11px] text-secondary-text mt-1">Tomorrow · 9:30 AM</p>
+                            <div class="flex items-center gap-2 mt-2 pt-2 border-t border-border">
+                                <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center">
+                                    <i class="fas fa-user-doctor text-accent text-[10px]"></i>
+                                </div>
+                                <span class="text-[11px] text-secondary-text">Dr. Emily Smith</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- CONTENT AREA -->
+            <div class="flex-1 min-w-0 overflow-y-auto custom-scrollbar pr-2">
+
+                <!-- ==================== OVERVIEW ==================== -->
+                <div id="overview" class="dash-section">
+                    <div class="dash-card p-5 sm:p-7 reveal active mb-6 bg-custom-gradient text-white">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <h2 class="text-2xl sm:text-3xl font-serif font-semibold mb-2">Good morning, Sarah 🌸</h2>
+                                <p class="text-white/85 text-sm max-w-xl">You're on Day 8 of your stimulation phase. Your next scan is tomorrow at 9:30 AM with Dr. Smith.</p>
+                            </div>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider">Apr 09, 2026</span>
+                                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider flex items-center gap-1">
+                                    <i class="fas fa-circle text-[6px]"></i> Cycle 2 · Active
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-6">
+                        <div class="dash-card p-6 reveal">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <p class="text-secondary-text text-xs uppercase tracking-wider font-medium">Cycle Day</p>
+                                    <p class="text-3xl font-semibold mt-2">8 <span class="text-base font-normal text-secondary-text">of 12</span></p>
+                                    <p class="text-accent text-xs font-medium mt-2 flex items-center gap-1">
+                                        <i class="fas fa-arrow-up"></i> On track
+                                    </p>
+                                </div>
+                                <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+                                    <i class="fas fa-heart-pulse text-accent text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-border">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 66%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dash-card p-6 reveal">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <p class="text-secondary-text text-xs uppercase tracking-wider font-medium">Next Appointment</p>
+                                    <p class="text-3xl font-semibold mt-2">1</p>
+                                    <p class="text-accent text-xs font-medium mt-2 flex items-center gap-1">
+                                        <i class="fas fa-calendar"></i> Tomorrow, 9:30 AM
+                                    </p>
+                                </div>
+                                <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+                                    <i class="fas fa-calendar-check text-accent text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-border flex gap-4 text-xs">
+                                <span><span class="font-semibold">2</span> <span class="text-secondary-text">this week</span></span>
+                                <span><span class="font-semibold">5</span> <span class="text-secondary-text">this month</span></span>
+                            </div>
+                        </div>
+
+                        <div class="dash-card p-6 reveal">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <p class="text-secondary-text text-xs uppercase tracking-wider font-medium">Lab Results</p>
+                                    <p class="text-3xl font-semibold mt-2">4</p>
+                                    <p class="text-accent text-xs font-medium mt-2 flex items-center gap-1">
+                                        <i class="fas fa-check-circle"></i> All reviewed
+                                    </p>
+                                </div>
+                                <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+                                    <i class="fas fa-flask-vial text-accent text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-border flex gap-4 text-xs">
+                                <span><span class="font-semibold">E2</span> <span class="text-secondary-text">1,240 pg/mL</span></span>
+                                <span><span class="font-semibold">P4</span> <span class="text-secondary-text">0.8 ng/mL</span></span>
+                            </div>
+                        </div>
+
+                        <div class="dash-card p-6 reveal">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <p class="text-secondary-text text-xs uppercase tracking-wider font-medium">Balance</p>
+                                    <p class="text-3xl font-semibold mt-2">$1,240</p>
+                                    <p class="text-secondary-text text-xs font-medium mt-2 flex items-center gap-1">
+                                        <i class="fas fa-clock"></i> Due May 01
+                                    </p>
+                                </div>
+                                <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+                                    <i class="fas fa-receipt text-accent text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-border flex gap-4 text-xs">
+                                <span><span class="font-semibold">$5,840</span> <span class="text-secondary-text">paid</span></span>
+                                <span><span class="font-semibold">$1,240</span> <span class="text-secondary-text">due</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cycle Progress + Recent Activity -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                        <div class="dash-card p-6 lg:col-span-2 reveal">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="font-semibold text-lg">Cycle 2 Progress Timeline</h3>
+                                <span class="text-xs text-secondary-text uppercase tracking-wider">Day 8 of 12</span>
+                            </div>
+
+                            <!-- Horizontal progress steps -->
+                            <div class="relative">
+                                <div class="absolute top-5 left-0 right-0 h-1 bg-border rounded-full"></div>
+                                <div class="absolute top-5 left-0 h-1 rounded-full bg-custom-gradient" style="width: 66%"></div>
+                                <div class="relative flex justify-between">
+                                    <div class="flex flex-col items-center" style="width: 20%">
+                                        <div class="w-10 h-10 rounded-full bg-custom-gradient text-white flex items-center justify-center shadow-md"><i class="fas fa-check text-sm"></i></div>
+                                        <p class="text-[11px] font-semibold mt-2 text-center">Consultation</p>
+                                        <p class="text-[10px] text-secondary-text">Mar 20</p>
+                                    </div>
+                                    <div class="flex flex-col items-center" style="width: 20%">
+                                        <div class="w-10 h-10 rounded-full bg-custom-gradient text-white flex items-center justify-center shadow-md"><i class="fas fa-check text-sm"></i></div>
+                                        <p class="text-[11px] font-semibold mt-2 text-center">Stimulation</p>
+                                        <p class="text-[10px] text-secondary-text">Apr 02</p>
+                                    </div>
+                                    <div class="flex flex-col items-center" style="width: 20%">
+                                        <div class="w-10 h-10 rounded-full bg-custom-gradient text-white flex items-center justify-center shadow-md ring-4 ring-accent/20"><i class="fas fa-heart-pulse text-sm"></i></div>
+                                        <p class="text-[11px] font-semibold mt-2 text-center text-accent">Monitoring</p>
+                                        <p class="text-[10px] text-secondary-text">Now</p>
+                                    </div>
+                                    <div class="flex flex-col items-center" style="width: 20%">
+                                        <div class="w-10 h-10 rounded-full bg-border text-secondary-text flex items-center justify-center"><i class="fas fa-syringe text-sm"></i></div>
+                                        <p class="text-[11px] font-semibold mt-2 text-center text-secondary-text">Retrieval</p>
+                                        <p class="text-[10px] text-secondary-text">Apr 14</p>
+                                    </div>
+                                    <div class="flex flex-col items-center" style="width: 20%">
+                                        <div class="w-10 h-10 rounded-full bg-border text-secondary-text flex items-center justify-center"><i class="fas fa-seedling text-sm"></i></div>
+                                        <p class="text-[11px] font-semibold mt-2 text-center text-secondary-text">Transfer</p>
+                                        <p class="text-[10px] text-secondary-text">Apr 19</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-10 p-4 rounded-xl bg-hover border border-border">
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-circle-info text-accent mt-1"></i>
+                                    <div>
+                                        <p class="text-sm font-semibold">Next milestone: Egg Retrieval</p>
+                                        <p class="text-xs text-secondary-text mt-1">Scheduled for Apr 14, 2026. Fasting required from midnight. Please arrive 30 minutes early.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dash-card p-6 reveal">
+                            <h3 class="font-semibold text-lg mb-4">Recent Activity</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-flask-vial text-green-600 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold">Lab results uploaded</p>
+                                        <p class="text-xs text-secondary-text">Estradiol 1,240 pg/mL · 5h ago</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-calendar-plus text-blue-600 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold">Appointment confirmed</p>
+                                        <p class="text-xs text-secondary-text">Follicle scan · Tomorrow 9:30 AM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-pills text-pink-600 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold">Medication reminder</p>
+                                        <p class="text-xs text-secondary-text">Gonal-F 150 IU · Tonight 8 PM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-comment-medical text-purple-600 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold">Message from Dr. Smith</p>
+                                        <p class="text-xs text-secondary-text">"Great progress on your scan!" · 1 day ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="w-full mt-6 py-3 text-xs font-semibold uppercase tracking-wider text-accent border border-accent/20 rounded-xl hover:bg-accent/5 transition">
+                                View All Activity
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Care Team -->
+                    <div class="dash-card p-6 reveal">
+                        <h3 class="font-semibold text-lg mb-5">Your Care Team</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div class="flex items-center gap-4 p-4 bg-hover rounded-2xl">
+                                <img src="assets/m.jpg" alt="Dr. Emily Smith" class="w-14 h-14 rounded-full object-cover border-2 border-accent">
+                                <div>
+                                    <p class="font-semibold text-sm">Dr. Emily Smith</p>
+                                    <p class="text-xs text-accent font-medium">Reproductive Endocrinologist</p>
+                                    <p class="text-[11px] text-secondary-text mt-1">Lead IVF Specialist</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 p-4 bg-hover rounded-2xl">
+                                <img src="assets/ty.jpg" alt="Dr. James Chen" class="w-14 h-14 rounded-full object-cover border-2 border-accent-light">
+                                <div>
+                                    <p class="font-semibold text-sm">Dr. James Chen</p>
+                                    <p class="text-xs text-accent-light font-medium">Embryologist</p>
+                                    <p class="text-[11px] text-secondary-text mt-1">Lab Director</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 p-4 bg-hover rounded-2xl">
+                                <img src="assets/gfd.jpg" alt="Nurse Maria" class="w-14 h-14 rounded-full object-cover border-2 border-accent">
+                                <div>
+                                    <p class="font-semibold text-sm">Maria Rodriguez, RN</p>
+                                    <p class="text-xs text-accent font-medium">Fertility Nurse</p>
+                                    <p class="text-[11px] text-secondary-text mt-1">Your care coordinator</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== TREATMENT CYCLE ==================== -->
+                <div id="cycle" class="dash-section hidden">
+                    <div class="dash-card p-5 sm:p-7 reveal active">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                            <h2 class="text-xl sm:text-2xl font-serif font-semibold text-primary-text flex items-center gap-2">
+                                <i class="fas fa-heart-pulse text-accent"></i> Treatment Cycle Details
+                            </h2>
+                            <span class="badge-active text-[10px] px-3 py-1.5">Cycle 2 · Active</span>
+                        </div>
+                        <p class="text-secondary-text text-sm mb-8">Track every stage of your IVF cycle. Your care team updates this in real time after every visit.</p>
+
+                        <!-- Cycle summary -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                            <div class="bg-hover rounded-2xl p-4 text-center">
+                                <p class="text-xs text-secondary-text uppercase tracking-wider">Cycle Started</p>
+                                <p class="font-semibold text-base mt-1">Apr 02, 2026</p>
+                            </div>
+                            <div class="bg-hover rounded-2xl p-4 text-center">
+                                <p class="text-xs text-secondary-text uppercase tracking-wider">Protocol</p>
+                                <p class="font-semibold text-base mt-1">Antagonist</p>
+                            </div>
+                            <div class="bg-hover rounded-2xl p-4 text-center">
+                                <p class="text-xs text-secondary-text uppercase tracking-wider">Retrieval ETA</p>
+                                <p class="font-semibold text-base mt-1">Apr 14, 2026</p>
+                            </div>
+                            <div class="bg-hover rounded-2xl p-4 text-center">
+                                <p class="text-xs text-secondary-text uppercase tracking-wider">Transfer ETA</p>
+                                <p class="font-semibold text-base mt-1">Apr 19, 2026</p>
+                            </div>
+                        </div>
+
+                        <!-- Vertical timeline -->
+                        <div class="relative">
+                            <div class="timeline-line"></div>
+                            <div class="space-y-6 relative">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-custom-gradient text-white flex items-center justify-center shrink-0 z-10 shadow-md">
+                                        <i class="fas fa-check text-sm"></i>
+                                    </div>
+                                    <div class="pt-1.5 flex-1">
+                                        <div class="flex justify-between items-start gap-3 flex-wrap">
+                                            <div>
+                                                <p class="font-semibold text-sm">Consultation & Baseline Testing</p>
+                                                <p class="text-xs text-secondary-text mt-1">Initial ultrasound, bloodwork, and treatment planning with Dr. Smith.</p>
+                                            </div>
+                                            <span class="text-xs text-secondary-text">Mar 20, 2026</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-custom-gradient text-white flex items-center justify-center shrink-0 z-10 shadow-md">
+                                        <i class="fas fa-check text-sm"></i>
+                                    </div>
+                                    <div class="pt-1.5 flex-1">
+                                        <div class="flex justify-between items-start gap-3 flex-wrap">
+                                            <div>
+                                                <p class="font-semibold text-sm">Ovarian Stimulation Started</p>
+                                                <p class="text-xs text-secondary-text mt-1">Gonal-F 150 IU + Menopur 75 IU daily. Monitoring every 2-3 days.</p>
+                                            </div>
+                                            <span class="text-xs text-secondary-text">Apr 02, 2026</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-custom-gradient text-white flex items-center justify-center shrink-0 z-10 shadow-md ring-4 ring-accent/20">
+                                        <i class="fas fa-heart-pulse text-sm"></i>
+                                    </div>
+                                    <div class="pt-1.5 flex-1">
+                                        <div class="flex justify-between items-start gap-3 flex-wrap">
+                                            <div>
+                                                <p class="font-semibold text-sm text-accent">Stimulation Monitoring (Current)</p>
+                                                <p class="text-xs text-secondary-text mt-1">Day 8 of 12. 9 follicles developing, all measuring appropriately.</p>
+                                            </div>
+                                            <span class="text-xs text-accent font-semibold">Now</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-border text-secondary-text flex items-center justify-center shrink-0 z-10">
+                                        <i class="fas fa-syringe text-sm"></i>
+                                    </div>
+                                    <div class="pt-1.5 flex-1">
+                                        <div class="flex justify-between items-start gap-3 flex-wrap">
+                                            <div>
+                                                <p class="font-semibold text-sm text-secondary-text">Trigger Shot & Egg Retrieval</p>
+                                                <p class="text-xs text-secondary-text mt-1">Final maturation injection, then minimally invasive retrieval procedure.</p>
+                                            </div>
+                                            <span class="text-xs text-secondary-text">Apr 14, 2026</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-border text-secondary-text flex items-center justify-center shrink-0 z-10">
+                                        <i class="fas fa-seedling text-sm"></i>
+                                    </div>
+                                    <div class="pt-1.5 flex-1">
+                                        <div class="flex justify-between items-start gap-3 flex-wrap">
+                                            <div>
+                                                <p class="font-semibold text-sm text-secondary-text">Fertilization & Embryo Culture</p>
+                                                <p class="text-xs text-secondary-text mt-1">Eggs fertilized with sperm, embryos monitored for 5 days in our lab.</p>
+                                            </div>
+                                            <span class="text-xs text-secondary-text">Apr 15–19, 2026</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-border text-secondary-text flex items-center justify-center shrink-0 z-10">
+                                        <i class="fas fa-baby text-sm"></i>
+                                    </div>
+                                    <div class="pt-1.5 flex-1">
+                                        <div class="flex justify-between items-start gap-3 flex-wrap">
+                                            <div>
+                                                <p class="font-semibold text-sm text-secondary-text">Embryo Transfer</p>
+                                                <p class="text-xs text-secondary-text mt-1">The healthiest embryo transferred to your uterus.</p>
+                                            </div>
+                                            <span class="text-xs text-secondary-text">Apr 19, 2026</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== APPOINTMENTS ==================== -->
+                <div id="appointments" class="dash-section hidden">
+                    <div class="dash-card p-5 sm:p-7 reveal active">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                            <h2 class="text-xl sm:text-2xl font-serif font-semibold text-primary-text flex items-center gap-2">
+                                <i class="fas fa-calendar-check text-accent"></i> My Appointments
+                            </h2>
+                            <button class="px-6 py-3 btn-primary rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
+                                <i class="fas fa-plus mr-1"></i> Request Appointment
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                            <div class="bg-hover rounded-2xl p-4 text-center">
+                                <p class="text-2xl font-semibold text-accent">2</p>
+                                <p class="text-[10px] text-secondary-text uppercase tracking-wider mt-1">This Week</p>
+                            </div>
+                            <div class="bg-hover rounded-2xl p-4 text-center">
+                                <p class="text-2xl font-semibold text-accent">5</p>
+                                <p class="text-[10px] text-secondary-text uppercase tracking-wider mt-1">This Month</p>
+                            </div>
+                            <div class="bg-hover rounded-2xl p-4 text-center">
+                                <p class="text-2xl font-semibold text-accent">18</p>
+                                <p class="text-[10px] text-secondary-text uppercase tracking-wider mt-1">Completed</p>
+                            </div>
+                            <div class="bg-hover rounded-2xl p-4 text-center">
+                                <p class="text-2xl font-semibold text-accent">1</p>
+                                <p class="text-[10px] text-secondary-text uppercase tracking-wider mt-1">Cancelled</p>
+                            </div>
+                        </div>
+
+                        <!-- Upcoming -->
+                        <h3 class="font-semibold text-lg mb-4">Upcoming</h3>
+                        <div class="space-y-3 mb-8">
+                            <div class="dash-card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-14 h-14 rounded-2xl bg-custom-gradient text-white flex flex-col items-center justify-center shrink-0">
+                                        <span class="text-[10px] uppercase">Apr</span>
+                                        <span class="text-xl font-bold">10</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Follicle Monitoring Scan</p>
+                                        <p class="text-xs text-secondary-text mt-1">9:30 AM · Dr. Emily Smith · Ultrasound Room 2</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="badge-active text-[10px]">Confirmed</span>
+                                    <button class="px-3 py-1.5 border border-border rounded-full text-xs font-semibold hover:bg-hover">Reschedule</button>
+                                </div>
+                            </div>
+                            <div class="dash-card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-14 h-14 rounded-2xl bg-hover flex flex-col items-center justify-center shrink-0 border border-border">
+                                        <span class="text-[10px] uppercase text-secondary-text">Apr</span>
+                                        <span class="text-xl font-bold text-primary-text">12</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Blood Work — Estradiol & Progesterone</p>
+                                        <p class="text-xs text-secondary-text mt-1">8:00 AM · FertiCare Lab · Fasting not required</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="badge-active text-[10px]">Confirmed</span>
+                                    <button class="px-3 py-1.5 border border-border rounded-full text-xs font-semibold hover:bg-hover">Reschedule</button>
+                                </div>
+                            </div>
+                            <div class="dash-card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-14 h-14 rounded-2xl bg-hover flex flex-col items-center justify-center shrink-0 border border-border">
+                                        <span class="text-[10px] uppercase text-secondary-text">Apr</span>
+                                        <span class="text-xl font-bold text-primary-text">14</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Egg Retrieval Procedure</p>
+                                        <p class="text-xs text-secondary-text mt-1">7:00 AM · Surgical Suite · Fasting required from midnight</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="badge-pending text-[10px]">Prep Required</span>
+                                    <button class="px-3 py-1.5 border border-border rounded-full text-xs font-semibold hover:bg-hover">Details</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Past -->
+                        <h3 class="font-semibold text-lg mb-4">Past Appointments</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between p-3 bg-hover rounded-xl text-sm">
+                                <span>Apr 07, 2026 · Monitoring Scan</span>
+                                <span class="badge-completed text-[10px]">Completed</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-hover rounded-xl text-sm">
+                                <span>Apr 04, 2026 · Blood Work (E2, P4)</span>
+                                <span class="badge-completed text-[10px]">Completed</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-hover rounded-xl text-sm">
+                                <span>Apr 02, 2026 · Stimulation Start Visit</span>
+                                <span class="badge-completed text-[10px]">Completed</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-hover rounded-xl text-sm">
+                                <span>Mar 28, 2026 · Nurse Consultation</span>
+                                <span class="badge-cancelled text-[10px]">Cancelled</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== LAB RESULTS ==================== -->
+                <div id="labresults" class="dash-section hidden">
+                    <div class="dash-card p-5 sm:p-7 reveal active">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                            <h2 class="text-xl sm:text-2xl font-serif font-semibold text-primary-text flex items-center gap-2">
+                                <i class="fas fa-flask-vial text-accent"></i> Lab Results
+                            </h2>
+                            <button class="px-5 py-2.5 border border-border rounded-full text-xs font-semibold hover:bg-hover">
+                                <i class="fas fa-download mr-1"></i> Download All
+                            </button>
+                        </div>
+                        <p class="text-secondary-text text-sm mb-6">All results are reviewed by your doctor before being published here. Contact our office if you have questions.</p>
+
+                        <!-- Latest results -->
+                        <h3 class="font-semibold text-lg mb-4">Latest Results (Apr 07, 2026)</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                            <div class="dash-card p-5">
+                                <p class="text-xs text-secondary-text uppercase tracking-wider">Estradiol (E2)</p>
+                                <p class="text-2xl font-semibold mt-2 text-accent">1,240 <span class="text-sm font-normal text-secondary-text">pg/mL</span></p>
+                                <div class="flex items-center gap-2 mt-3">
+                                    <i class="fas fa-arrow-up text-green-500 text-xs"></i>
+                                    <span class="text-xs text-secondary-text">Normal rise for Day 7</span>
+                                </div>
+                            </div>
+                            <div class="dash-card p-5">
+                                <p class="text-xs text-secondary-text uppercase tracking-wider">Progesterone (P4)</p>
+                                <p class="text-2xl font-semibold mt-2 text-accent">0.8 <span class="text-sm font-normal text-secondary-text">ng/mL</span></p>
+                                <div class="flex items-center gap-2 mt-3">
+                                    <i class="fas fa-check-circle text-green-500 text-xs"></i>
+                                    <span class="text-xs text-secondary-text">Within target range</span>
+                                </div>
+                            </div>
+                            <div class="dash-card p-5">
+                                <p class="text-xs text-secondary-text uppercase tracking-wider">LH</p>
+                                <p class="text-2xl font-semibold mt-2 text-accent">3.2 <span class="text-sm font-normal text-secondary-text">mIU/mL</span></p>
+                                <div class="flex items-center gap-2 mt-3">
+                                    <i class="fas fa-check-circle text-green-500 text-xs"></i>
+                                    <span class="text-xs text-secondary-text">Suppressed as expected</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Historical -->
+                        <h3 class="font-semibold text-lg mb-4">Previous Results</h3>
+                        <div class="space-y-3">
+                            <div class="dash-card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
+                                        <i class="fas fa-flask-vial text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Baseline Hormone Panel</p>
+                                        <p class="text-xs text-secondary-text mt-1">FSH, LH, E2, AMH, TSH · Apr 02, 2026</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="badge-completed text-[10px]">Reviewed</span>
+                                    <button class="px-3 py-1.5 border border-border rounded-full text-xs font-semibold hover:bg-hover"><i class="fas fa-download"></i></button>
+                                </div>
+                            </div>
+                            <div class="dash-card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
+                                        <i class="fas fa-flask-vial text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">AMH & Ovarian Reserve</p>
+                                        <p class="text-xs text-secondary-text mt-1">AMH 2.4 ng/mL · Mar 20, 2026</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="badge-completed text-[10px]">Reviewed</span>
+                                    <button class="px-3 py-1.5 border border-border rounded-full text-xs font-semibold hover:bg-hover"><i class="fas fa-download"></i></button>
+                                </div>
+                            </div>
+                            <div class="dash-card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
+                                        <i class="fas fa-flask-vial text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Semen Analysis (Partner)</p>
+                                        <p class="text-xs text-secondary-text mt-1">Count, motility, morphology · Mar 22, 2026</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="badge-completed text-[10px]">Reviewed</span>
+                                    <button class="px-3 py-1.5 border border-border rounded-full text-xs font-semibold hover:bg-hover"><i class="fas fa-download"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== MEDICATIONS ==================== -->
+                <div id="medications" class="dash-section hidden">
+                    <div class="dash-card p-5 sm:p-7 reveal active">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                            <h2 class="text-xl sm:text-2xl font-serif font-semibold text-primary-text flex items-center gap-2">
+                                <i class="fas fa-pills text-accent"></i> Medications & Reminders
+                            </h2>
+                        </div>
+                        <p class="text-secondary-text text-sm mb-8">Follow your medication protocol exactly as prescribed. Set reminders in the FertiCare app for best results.</p>
+
+                        <!-- Current protocol -->
+                        <h3 class="font-semibold text-lg mb-4">Current Protocol</h3>
+                        <div class="space-y-3 mb-8">
+                            <div class="dash-card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-custom-gradient text-white flex items-center justify-center shrink-0">
+                                        <i class="fas fa-syringe text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Gonal-F 150 IU</p>
+                                        <p class="text-xs text-secondary-text mt-1">Subcutaneous injection · Once daily · 8:00 PM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="toggle-switch active" onclick="this.classList.toggle('active'); this.classList.toggle('inactive');">
+                                        <div class="knob"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dash-card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-custom-gradient text-white flex items-center justify-center shrink-0">
+                                        <i class="fas fa-syringe text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Menopur 75 IU</p>
+                                        <p class="text-xs text-secondary-text mt-1">Subcutaneous injection · Once daily · 8:00 PM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="toggle-switch active" onclick="this.classList.toggle('active'); this.classList.toggle('inactive');">
+                                        <div class="knob"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dash-card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-custom-gradient text-white flex items-center justify-center shrink-0">
+                                        <i class="fas fa-syringe text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Cetrotide 0.25 mg</p>
+                                        <p class="text-xs text-secondary-text mt-1">Subcutaneous injection · Once daily · 8:00 AM (from Day 6)</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="toggle-switch active" onclick="this.classList.toggle('active'); this.classList.toggle('inactive');">
+                                        <div class="knob"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dash-card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-accent/40">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-hover flex items-center justify-center shrink-0 border border-border">
+                                        <i class="fas fa-syringe text-lg text-accent"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Ovidrel Trigger Shot</p>
+                                        <p class="text-xs text-secondary-text mt-1">Single injection · Scheduled Apr 12, 2026 at 10:00 PM</p>
+                                    </div>
+                                </div>
+                                <span class="badge-scheduled text-[10px]">Upcoming</span>
+                            </div>
+                        </div>
+
+                        <!-- Supplements -->
+                        <h3 class="font-semibold text-lg mb-4">Supplements & Support</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-hover rounded-xl text-sm">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-capsules text-accent"></i>
+                                    <span>Prenatal Vitamin</span>
+                                </div>
+                                <span class="text-xs text-secondary-text">1 daily with food</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-hover rounded-xl text-sm">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-capsules text-accent"></i>
+                                    <span>Vitamin D3 2000 IU</span>
+                                </div>
+                                <span class="text-xs text-secondary-text">1 daily</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-hover rounded-xl text-sm">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-capsules text-accent"></i>
+                                    <span>CoQ10 200 mg</span>
+                                </div>
+                                <span class="text-xs text-secondary-text">2 daily with meals</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== BILLING ==================== -->
+                <div id="billing" class="dash-section hidden">
+                    <div class="dash-card p-5 sm:p-7 reveal active">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                            <h2 class="text-xl sm:text-2xl font-serif font-semibold text-primary-text flex items-center gap-2">
+                                <i class="fas fa-receipt text-accent"></i> Billing History
+                            </h2>
+                            <button class="px-6 py-3 btn-primary rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
+                                <i class="fas fa-download mr-1"></i> Download Statement
+                            </button>
+                        </div>
+
+                        <!-- Balance summary -->
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-custom-gradient rounded-2xl p-6 text-white">
+                                <p class="text-white/70 text-xs uppercase tracking-wider font-semibold">Outstanding Balance</p>
+                                <p class="text-4xl font-semibold mt-1">$1,240.00</p>
+                                <p class="text-white/70 text-xs mt-2">Due by May 01, 2026</p>
+                                <button class="mt-4 bg-white text-accent font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-widest hover:scale-105 transition">
+                                    Pay Now
+                                </button>
+                            </div>
+                            <div class="dash-card p-6">
+                                <p class="text-secondary-text text-xs uppercase tracking-wider font-semibold mb-4">Treatment Summary</p>
+                                <div class="flex items-baseline gap-3">
+                                    <p class="text-4xl font-semibold text-accent">$5,840</p>
+                                    <span class="text-sm text-secondary-text">paid to date</span>
+                                </div>
+                                <div class="mt-5 pt-4 border-t border-border grid grid-cols-2 gap-4">
+                                    <div>
+                                        <p class="text-xs text-secondary-text">Cycle Package</p>
+                                        <p class="font-semibold text-base">$5,500</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-secondary-text">Additional Labs</p>
+                                        <p class="font-semibold text-base">$340</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment methods -->
+                        <h3 class="font-semibold text-lg mb-4">Payment Method on File</h3>
+                        <div class="flex items-center justify-between p-4 bg-hover rounded-2xl mb-8">
+                            <div class="flex items-center gap-4">
+                                <i class="fab fa-cc-visa text-3xl text-accent"></i>
+                                <div>
+                                    <p class="font-semibold text-sm">Visa ending in 4242</p>
+                                    <p class="text-xs text-secondary-text">Expires 08/2028 · Auto-pay enabled</p>
+                                </div>
+                            </div>
+                            <button class="px-3 py-1.5 border border-border rounded-full text-xs font-semibold hover:bg-background">Edit</button>
+                        </div>
+
+                        <!-- Invoice list -->
+                        <h3 class="font-semibold text-lg mb-4">Recent Invoices</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between p-3 bg-hover rounded-xl text-sm">
+                                <div>
+                                    <p class="font-semibold">Cycle 2 — Stimulation Phase</p>
+                                    <p class="text-xs text-secondary-text mt-0.5">Invoice #FC-2026-0482 · Apr 02, 2026</p>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="font-semibold">$2,200.00</span>
+                                    <span class="badge-completed text-[10px]">Paid</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-hover rounded-xl text-sm">
+                                <div>
+                                    <p class="font-semibold">Cycle 2 — Monitoring & Labs</p>
+                                    <p class="text-xs text-secondary-text mt-0.5">Invoice #FC-2026-0478 · Apr 01, 2026</p>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="font-semibold">$1,240.00</span>
+                                    <span class="badge-pending text-[10px]">Due</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-hover rounded-xl text-sm">
+                                <div>
+                                    <p class="font-semibold">Consultation & Baseline Testing</p>
+                                    <p class="text-xs text-secondary-text mt-0.5">Invoice #FC-2026-0410 · Mar 20, 2026</p>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="font-semibold">$1,900.00</span>
+                                    <span class="badge-completed text-[10px]">Paid</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-hover rounded-xl text-sm">
+                                <div>
+                                    <p class="font-semibold">Initial Fertility Assessment</p>
+                                    <p class="text-xs text-secondary-text mt-0.5">Invoice #FC-2026-0388 · Mar 12, 2026</p>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="font-semibold">$1,740.00</span>
+                                    <span class="badge-completed text-[10px]">Paid</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== SUPPORT ==================== -->
+                <div id="support" class="dash-section hidden">
+                    <div class="dash-card p-5 sm:p-7 reveal active">
+                        <h2 class="text-xl sm:text-2xl font-serif font-semibold text-primary-text mb-2 flex items-center gap-2">
+                            <i class="fas fa-headset text-accent"></i> Help & Support
+                        </h2>
+                        <p class="text-secondary-text text-sm mb-8">We're here for you. Reach out anytime with questions about your treatment, medications, or billing.</p>
+
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-hover rounded-2xl p-6 text-center">
+                                <div class="w-14 h-14 mx-auto bg-accent/10 rounded-full flex items-center justify-center text-accent text-2xl mb-4">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <h3 class="font-semibold text-lg mb-2">Patient Care Line</h3>
+                                <p class="text-sm text-secondary-text mb-4">Speak to our fertility nurses during clinic hours.</p>
+                                <a href="tel:+18001234567" class="text-accent font-semibold">+1 (800) 123-4567</a>
+                            </div>
+                            <div class="bg-hover rounded-2xl p-6 text-center">
+                                <div class="w-14 h-14 mx-auto bg-accent/10 rounded-full flex items-center justify-center text-accent text-2xl mb-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h3 class="font-semibold text-lg mb-2">Email Support</h3>
+                                <p class="text-sm text-secondary-text mb-4">Non-urgent questions answered within 24 hours.</p>
+                                <a href="mailto:patients@ferticare.com" class="text-accent font-semibold">patients@ferticare.com</a>
+                            </div>
+                        </div>
+
+                        <h3 class="font-semibold text-lg mb-4">Frequently Asked Questions</h3>
+                        <div class="space-y-3">
+                            <details class="bg-hover rounded-2xl p-4 cursor-pointer">
+                                <summary class="font-semibold text-sm">What should I do if I miss a medication dose?</summary>
+                                <p class="text-xs text-secondary-text mt-3">Call our patient care line immediately. Do not double up on doses without speaking to your nurse first.</p>
+                            </details>
+                            <details class="bg-hover rounded-2xl p-4 cursor-pointer">
+                                <summary class="font-semibold text-sm">Can I exercise during stimulation?</summary>
+                                <p class="text-xs text-secondary-text mt-3">Gentle walking and light stretching are fine, but avoid high-impact activities or twisting motions as your ovaries enlarge.</p>
+                            </details>
+                            <details class="bg-hover rounded-2xl p-4 cursor-pointer">
+                                <summary class="font-semibold text-sm">How long does the egg retrieval take?</summary>
+                                <p class="text-xs text-secondary-text mt-3">The procedure itself takes about 20–30 minutes. You'll rest in recovery for 1–2 hours before going home.</p>
+                            </details>
+                            <details class="bg-hover rounded-2xl p-4 cursor-pointer">
+                                <summary class="font-semibold text-sm">When will I know my lab results?</summary>
+                                <p class="text-xs text-secondary-text mt-3">Most results are uploaded to your dashboard within 24 hours. Your care team will message you directly if anything needs attention.</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== SETTINGS ==================== -->
+                <div id="settings" class="dash-section hidden">
+                    <div class="dash-card p-5 sm:p-7 reveal active">
+                        <h2 class="text-xl sm:text-2xl font-serif font-semibold text-primary-text mb-8 flex items-center gap-2">
+                            <i class="fas fa-sliders text-accent"></i> Account Settings
+                        </h2>
+
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-4 pb-2 border-b border-border">Personal Information</h3>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="text-xs uppercase tracking-wider font-semibold text-secondary-text block mb-2">Full Name</label>
+                                        <input type="text" value="Sarah Mitchell" class="w-full bg-hover border border-border rounded-xl px-4 py-3 text-primary-text outline-none focus:border-accent transition">
+                                    </div>
+                                    <div>
+                                        <label class="text-xs uppercase tracking-wider font-semibold text-secondary-text block mb-2">Email</label>
+                                        <input type="email" value="sarah.mitchell@example.com" class="w-full bg-hover border border-border rounded-xl px-4 py-3 text-primary-text outline-none focus:border-accent transition">
+                                    </div>
+                                    <div>
+                                        <label class="text-xs uppercase tracking-wider font-semibold text-secondary-text block mb-2">Phone</label>
+                                        <input type="tel" value="+1 (555) 234-5678" class="w-full bg-hover border border-border rounded-xl px-4 py-3 text-primary-text outline-none focus:border-accent transition">
+                                    </div>
+                                    <div>
+                                        <label class="text-xs uppercase tracking-wider font-semibold text-secondary-text block mb-2">Partner's Name</label>
+                                        <input type="text" value="Mark Mitchell" class="w-full bg-hover border border-border rounded-xl px-4 py-3 text-primary-text outline-none focus:border-accent transition">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="font-semibold text-lg mb-4 pb-2 border-b border-border">Notifications</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between p-4 bg-hover rounded-2xl">
+                                        <div>
+                                            <p class="font-semibold text-sm">Appointment reminders</p>
+                                            <p class="text-xs text-secondary-text mt-1">SMS and push 24h before each visit</p>
+                                        </div>
+                                        <div class="toggle-switch active" onclick="this.classList.toggle('active'); this.classList.toggle('inactive');">
+                                            <div class="knob"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-4 bg-hover rounded-2xl">
+                                        <div>
+                                            <p class="font-semibold text-sm">Medication reminders</p>
+                                            <p class="text-xs text-secondary-text mt-1">Daily at your protocol times</p>
+                                        </div>
+                                        <div class="toggle-switch active" onclick="this.classList.toggle('active'); this.classList.toggle('inactive');">
+                                            <div class="knob"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-4 bg-hover rounded-2xl">
+                                        <div>
+                                            <p class="font-semibold text-sm">Lab result notifications</p>
+                                            <p class="text-xs text-secondary-text mt-1">Instantly when results are uploaded</p>
+                                        </div>
+                                        <div class="toggle-switch active" onclick="this.classList.toggle('active'); this.classList.toggle('inactive');">
+                                            <div class="knob"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-4 bg-hover rounded-2xl">
+                                        <div>
+                                            <p class="font-semibold text-sm">Weekly wellness tips</p>
+                                            <p class="text-xs text-secondary-text mt-1">Nutrition, mindfulness, and IVF support</p>
+                                        </div>
+                                        <div class="toggle-switch inactive" onclick="this.classList.toggle('active'); this.classList.toggle('inactive');">
+                                            <div class="knob"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-4 flex gap-4">
+                                <button class="btn-primary px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl">Save Changes</button>
+                                <button class="btn-outline px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== LOGOUT ==================== -->
+                <div id="logout" class="dash-section hidden">
+                    <div class="dash-card p-10 reveal active text-center max-w-lg mx-auto border-red-500/20">
+                        <div class="w-20 h-20 mx-auto bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center text-red-500 text-3xl mb-6">
+                            <i class="fas fa-door-open"></i>
+                        </div>
+                        <h2 class="text-2xl font-serif font-semibold text-primary-text">Log out of FertiCare?</h2>
+                        <p class="text-secondary-text mt-3 text-sm leading-relaxed">You will need to sign in again to access your treatment dashboard.</p>
+                        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="login.html">
+                                <button class="bg-red-500 hover:bg-red-600 text-white font-bold uppercase tracking-widest px-8 py-3 rounded-full text-[10px] transition shadow-lg shadow-red-200 dark:shadow-none">
+                                    Log Out
+                                </button>
+                            </a>
+                            <button onclick="activateSection('overview')" class="bg-hover border border-border px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest transition">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TRUST BANNER -->
+                <div class="bg-custom-gradient rounded-3xl p-6 sm:p-8 mt-10 text-white reveal flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+                    <div class="flex items-center gap-4 text-center sm:text-left">
+                        <span class="w-3 h-3 bg-white rounded-full animate-ping flex-shrink-0"></span>
+                        <div>
+                            <p class="font-serif font-semibold text-lg tracking-tight">Your care team is with you</p>
+                            <p class="text-xs text-white/85">Secure patient portal · HIPAA-compliant · Real-time updates</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="bg-white/20 backdrop-blur-md px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest">72% Success Rate Under 35</span>
+                    </div>
+                </div>
+
+                <!-- FOOTER -->
+                <footer class="mt-12 text-center text-[10px] text-secondary-text border-t border-border pt-8 pb-12 w-full">
+                    <p class="uppercase tracking-[0.3em] font-semibold opacity-40">© 2026 FertiCare Clinic · Patient Dashboard v1.0</p>
+                    <div class="flex justify-center gap-8 mt-4 font-semibold uppercase opacity-60">
+                        <span class="hover:text-accent cursor-pointer transition">Privacy</span>
+                        <span class="hover:text-accent cursor-pointer transition">HIPAA Notice</span>
+                        <span class="hover:text-accent cursor-pointer transition">Terms</span>
+                        <span class="hover:text-accent cursor-pointer transition">Contact</span>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </main>
+
+    <!-- MOBILE DRAWER (matching index.html structure) -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
+            <div class="flex justify-between items-center pb-4 border-b border-border">
+                <a href="index.html" class="text-2xl font-serif font-extrabold tracking-wide">
+                    <i class="fa-solid fa-hand-holding-heart text-accent"></i> <span class="text-accent text-xl sm:text-2xl">FertiCare</span>
+                </a>
+                <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2 py-4">
+                <a href="#" onclick="activateSection('overview'); return false;" class="block text-primary-text font-semibold text-lg py-2">Dashboard Home</a>
+                <a href="#" onclick="activateSection('cycle'); return false;" class="block text-primary-text font-semibold text-lg py-2">Treatment Cycle</a>
+                <a href="#" onclick="activateSection('appointments'); return false;" class="block text-primary-text font-semibold text-lg py-2">Appointments</a>
+                <a href="#" onclick="activateSection('labresults'); return false;" class="block text-primary-text font-semibold text-lg py-2">Lab Results</a>
+                <a href="#" onclick="activateSection('medications'); return false;" class="block text-primary-text font-semibold text-lg py-2">Medications</a>
+                <a href="#" onclick="activateSection('billing'); return false;" class="block text-primary-text font-semibold text-lg py-2">Billing History</a>
+                <a href="#" onclick="activateSection('support'); return false;" class="block text-primary-text font-semibold text-lg py-2">Help & Support</a>
+                <a href="#" onclick="activateSection('settings'); return false;" class="block text-primary-text font-semibold text-lg py-2">Settings</a>
+                <a href="#" onclick="activateSection('logout'); return false;" class="block text-red-500 font-semibold text-lg py-2">Log Out</a>
+            </nav>
+            <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
+                <button id="mobile-lang-icon-drawer" class="flex flex-col items-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+                    <span class="text-xs mt-1 text-secondary-text">RTL</span>
+                </button>
+                <button id="drawer-theme-toggle" class="flex flex-col items-center">
+                    <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <span class="text-xs mt-1 text-secondary-text">Theme</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Sidebar toggle
+            const sidebar = document.getElementById('sidebar-container');
+            const overlay = document.getElementById('mobile-overlay');
+
+            function toggleMobileMenu(isOpen) {
+                if (isOpen) {
+                    sidebar.classList.remove('-translate-x-full');
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    sidebar.classList.add('-translate-x-full');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+            document.getElementById('mobile-menu-toggle')?.addEventListener('click', () => toggleMobileMenu(true));
+            document.getElementById('close-sidebar')?.addEventListener('click', () => toggleMobileMenu(false));
+            overlay?.addEventListener('click', () => toggleMobileMenu(false));
+
+            // Mobile drawer (matching index.html)
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            // Theme toggle (matches index.html)
+            const themeToggles = [document.getElementById('theme-toggle-user'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => {
+                btn?.addEventListener('click', () => {
+                    const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                    localStorage.setItem('theme', next);
+                    applyTheme(next);
+                });
+            });
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            // RTL toggle
+            const langToggles = [document.getElementById('lang-toggle'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn?.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Section switching
+            const sections = ['overview', 'cycle', 'appointments', 'labresults', 'medications', 'billing', 'support', 'settings', 'logout'];
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+            window.activateSection = function (sectionId) {
+                sections.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.add('hidden');
+                });
+                const activeEl = document.getElementById(sectionId);
+                if (activeEl) {
+                    activeEl.classList.remove('hidden');
+                    activeEl.classList.add('active');
+                }
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.section === sectionId) link.classList.add('active');
+                });
+                if (window.innerWidth < 1280) {
+                    toggleMobileMenu(false);
+                    closeDrawer();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            };
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (this.dataset.section) activateSection(this.dataset.section);
+                });
+            });
+
+            // Reveal on scroll
+            function checkReveal() {
+                document.querySelectorAll('.reveal').forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
+                });
+            }
+            window.addEventListener('scroll', checkReveal);
+            window.addEventListener('load', checkReveal);
+
+            // Default
+            activateSection('overview');
+        });
+    </script>
+</body>
+</html>

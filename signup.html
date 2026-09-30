@@ -1,0 +1,351 @@
+    <!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FertiCare | Create Account</title>
+    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <meta name="description" content="Join FertiCare Clinic — IVF & Fertility Patient Portal">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#EC4899',
+                        accentLight: '#3B82F6',
+                        offWhite: '#FDF2F8'
+                    },
+                    fontFamily: {
+                        'display': ['ui-sans-serif', 'system-ui', 'sans-serif'],
+                        'serif': ['ui-serif', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        * { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-weight: 500 !important; }
+        [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+
+        body {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FDF2F8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .dark body {
+            background: linear-gradient(135deg, #000000 0%, #1E293B 100%);
+        }
+
+        .auth-card { transition: all 0.3s ease; }
+        .input-field { transition: all 0.2s ease; }
+        .input-field:focus { ring: 2px solid #EC4899; border-color: #EC4899; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #EC4899 0%, #3B82F6 100%);
+        }
+        .btn-primary:hover {
+            opacity: 0.92;
+            box-shadow: 0 8px 24px rgba(236, 72, 153, 0.35);
+        }
+
+        .controls {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 50;
+        }
+        html[dir="rtl"] .controls { right: auto; left: 1rem; }
+
+        .btn-control {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #E2E8F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .dark .btn-control {
+            background: #1E293B;
+            border-color: #334155;
+            color: #F1F5F9;
+        }
+        .btn-control:hover {
+            background: #EC4899;
+            color: white;
+            border-color: #EC4899;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-[#1E293B] dark:bg-black dark:text-gray-100 transition-colors duration-300">
+
+    <div class="controls">
+        <button onclick="toggleRTL()" class="btn-control" title="Toggle RTL">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+            </svg>
+        </button>
+        <button onclick="toggleTheme()" class="btn-control" title="Toggle Dark Mode">
+            <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="relative w-full max-w-5xl">
+        <div class="auth-card w-full flex flex-col md:flex-row rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-[#0F172A]/95">
+
+            <!-- Left Side - Brand Section -->
+            <div class="hidden md:flex md:w-5/12 relative p-8 flex-col justify-between bg-cover bg-center"
+                style="background-image: url('assets/b1.jpg');">
+                <div class="absolute inset-0 bg-white/70 backdrop-blur-[2px]"></div>
+
+                
+                <div class="absolute inset-0 opacity-5">
+                    <i class="fa-solid fa-hand-holding-heart text-8xl absolute bottom-4 right-4"></i>
+                    <i class="fa-solid fa-heart-pulse text-6xl absolute top-10 left-4"></i>
+                </div>
+
+                <div class="relative z-10">
+                    <a href="index.html" class="text-3xl font-serif font-extrabold tracking-tight mb-4 inline-block">
+                        <i class="fa-solid fa-hand-holding-heart text-accent"></i> <span class="text-accent text-xl sm:text-2xl">FertiCare</span>
+                    </a>
+
+                    <div class="mt-12">
+                        <h2 class="text-3xl font-serif font-bold text-[#1E293B] leading-tight mb-4">
+                            Begin Your<br>Fertility Journey<br>Today
+                        </h2>
+                        <p class="text-[#475569] text-sm">
+                            Join thousands of families who have trusted FertiCare with their path to parenthood.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 mt-12">
+                    <div class="bg-white/60 backdrop-blur-md p-5 rounded-2xl border border-white/20">
+                        <i class="fas fa-quote-left text-accent text-sm mb-2"></i>
+                        <p class="italic text-sm text-[#1E293B] font-medium">"The transparency throughout the IVF process was incredible. Our dashboard kept us updated daily."</p>
+                        <p class="text-xs text-[#475569] mt-3 font-semibold">— Emily R., FertiCare Mother</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Sign Up Form -->
+            <div class="w-full md:w-7/12 flex items-center justify-center p-2 sm:p-4 lg:p-6">
+                <div class="w-full max-w-md">
+
+                    <!-- Mobile Logo -->
+                    <div class="md:hidden text-center mb-8 mt-4">
+                        <a href="index.html" class="flex items-center justify-center gap-2">
+                            <span class="flex h-12 w-12 items-center justify-center rounded-full text-[#1E293B] shadow-lg"
+                                  style="background: linear-gradient(135deg, #EC4899, #3B82F6);">
+                                <i class="fa-solid fa-hand-holding-heart text-xl"></i>
+                            </span>
+                            <span class="block text-2xl font-serif font-extrabold tracking-tight text-accent">FertiCare</span>
+                        </a>
+                    </div>
+
+                    <div class="mb-3 text-center">
+                        <h3 class="text-xl font-serif font-semibold text-[#1E293B] dark:text-white mb-0.5">
+                            Create Account
+                        </h3>
+                        <p class="text-[11px] text-[#475569] dark:text-gray-400">
+                            Join FertiCare and start your personalized fertility journey
+                        </p>
+                    </div>
+
+                    <!-- Social Sign Up Options -->
+                    <div class="flex justify-center gap-4 mb-6">
+                        <button class="w-14 h-14 rounded-full border border-[#E2E8F0] dark:border-white/10 flex items-center justify-center hover:bg-[#FDF2F8] dark:hover:bg-white/5 transition shadow-sm bg-white dark:bg-[#1E293B]">
+                            <svg class="w-6 h-6" viewBox="0 0 48 48">
+                                <path fill="#EA4335" d="M24 9.5c3.2 0 6.1 1.1 8.3 3.1l6.2-6.2C34.8 2.4 29.7 0 24 0 14.6 0 6.6 5.5 2.7 13.4l7.3 5.7C11.9 13.1 17.4 9.5 24 9.5z" />
+                                <path fill="#34A853" d="M46.1 24.5c0-1.7-.2-3.3-.5-4.9H24v9.3h12.4c-.5 2.9-2.1 5.4-4.5 7.1l6.9 5.4c4-3.7 6.3-9.1 6.3-16.9z" />
+                                <path fill="#FBBC05" d="M10 28.7c-.5-1.4-.8-2.9-.8-4.4s.3-3 .8-4.4l-7.3-5.7C1 17.1 0 20.4 0 24s1 6.9 2.7 9.8l7.3-5.7z" />
+                                <path fill="#EA4335" d="M24 48c6.5 0 11.9-2.1 15.8-5.7l-6.9-5.4c-2 1.3-4.6 2.1-8.9 2.1-6.6 0-12.1-3.6-14.1-8.6l-7.3 5.7C6.6 42.5 14.6 48 24 48z" />
+                            </svg>
+                        </button>
+                        <button class="w-14 h-14 rounded-full border border-[#E2E8F0] dark:border-white/10 flex items-center justify-center hover:bg-[#FDF2F8] dark:hover:bg-white/5 transition shadow-sm bg-white dark:bg-[#1E293B]">
+                            <svg class="w-6 h-6 text-black dark:text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+                            </svg>
+                        </button>
+                        <button class="w-14 h-14 rounded-full border border-[#E2E8F0] dark:border-white/10 flex items-center justify-center hover:bg-[#FDF2F8] dark:hover:bg-white/5 transition shadow-sm bg-white dark:bg-[#1E293B]">
+                            <svg class="w-6 h-6 text-[#1877F2]" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22 12a10 10 0 10-11.5 9.88v-7H8v-2.88h2.5V9.5c0-2.46 1.47-3.82 3.72-3.82 1.08 0 2.2.2 2.2.2v2.4h-1.24c-1.22 0-1.6.76-1.6 1.54v1.85H16l-.4 2.88h-2.18v7A10 10 0 0022 12z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="flex-1 h-px bg-[#E2E8F0] dark:bg-white/10"></div>
+                        <span class="text-[10px] font-bold uppercase text-[#475569] dark:text-gray-500">OR SIGN UP WITH EMAIL</span>
+                        <div class="flex-1 h-px bg-[#E2E8F0] dark:bg-white/10"></div>
+                    </div>
+
+                    <!-- Sign Up Form -->
+                    <form class="space-y-4" onsubmit="event.preventDefault(); handleSignup();">
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-[#475569] dark:text-gray-400 mb-1.5">
+                                Full Name
+                            </label>
+                            <input type="text" id="firstName" required
+                                class="input-field w-full px-4 py-2.5 rounded-xl text-sm outline-none focus:ring-2 focus:ring-accent/50 transition border border-[#E2E8F0] dark:border-white/10 bg-white dark:bg-[#1E293B] text-[#1E293B] dark:text-white"
+                                placeholder="Sarah">
+                        </div>
+                       
+
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-[#475569] dark:text-gray-400 mb-1.5">
+                                Email Address
+                            </label>
+                            <input type="email" id="signupEmail" required
+                                class="input-field w-full px-4 py-2.5 rounded-xl text-sm outline-none focus:ring-2 focus:ring-accent/50 transition border border-[#E2E8F0] dark:border-white/10 bg-white dark:bg-[#1E293B] text-[#1E293B] dark:text-white"
+                                placeholder="name@example.com">
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-[#475569] dark:text-gray-400 mb-1.5">
+                                Password
+                            </label>
+                            <div class="relative">
+                                <input type="password" id="signup-password" required
+                                    class="input-field w-full px-4 py-2.5 rounded-xl text-sm outline-none focus:ring-2 focus:ring-accent/50 transition pr-10 border border-[#E2E8F0] dark:border-white/10 bg-white dark:bg-[#1E293B] text-[#1E293B] dark:text-white"
+                                    placeholder="••••••••">
+                                <button type="button" onclick="togglePasswordVisibility('signup-password', this)"
+                                    class="absolute inset-y-0 right-0 pr-3 flex items-center text-[#475569] dark:text-gray-500">
+                                    <i class="far fa-eye text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-[#475569] dark:text-gray-400 mb-1.5">
+                                Confirm Password
+                            </label>
+                            <div class="relative">
+                                <input type="password" id="signup-confirm-password" required
+                                    class="input-field w-full px-4 py-2.5 rounded-xl text-sm outline-none focus:ring-2 focus:ring-accent/50 transition pr-10 border border-[#E2E8F0] dark:border-white/10 bg-white dark:bg-[#1E293B] text-[#1E293B] dark:text-white"
+                                    placeholder="••••••••">
+                                <button type="button" onclick="togglePasswordVisibility('signup-confirm-password', this)"
+                                    class="absolute inset-y-0 right-0 pr-3 flex items-center text-[#475569] dark:text-gray-500">
+                                    <i class="far fa-eye text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2 py-1">
+                            <input type="checkbox" required id="terms"
+                                class="w-3.5 h-3.5 rounded border-[#E2E8F0] dark:border-white/20 text-accent focus:ring-accent">
+                            <label for="terms" class="text-[10px] text-[#475569] dark:text-gray-400 cursor-pointer">
+                                I agree to the <span class="text-accent hover:underline">Terms</span> and
+                                <span class="text-accent hover:underline">Privacy Policy</span>
+                            </label>
+                        </div>
+
+                        <button type="submit"
+                            class="btn-primary w-full py-3 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/20 hover:opacity-90 transition-transform active:scale-95">
+                            Create Account
+                        </button>
+                    </form>
+
+                    <p class="text-[10px] mt-3 text-center text-[#475569] dark:text-gray-400">
+                        Already have an account?
+                        <a href="login.html" class="text-accent font-bold hover:underline">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const htmlEl = document.documentElement;
+        const bodyEl = document.body;
+        const lightIcons = document.querySelectorAll('.light-icon');
+        const darkIcons = document.querySelectorAll('.dark-icon');
+
+        function applyThemeIcons(theme) {
+            lightIcons.forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+            darkIcons.forEach(i => i.classList.toggle('hidden', theme === 'light'));
+        }
+
+        function toggleTheme() {
+            if (htmlEl.classList.contains('dark')) {
+                htmlEl.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                applyThemeIcons('light');
+            } else {
+                htmlEl.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                applyThemeIcons('dark');
+            }
+        }
+
+        function toggleRTL() {
+            const currentDir = bodyEl.getAttribute('dir') || 'ltr';
+            bodyEl.setAttribute('dir', currentDir === 'ltr' ? 'rtl' : 'ltr');
+            localStorage.setItem('dir', bodyEl.getAttribute('dir'));
+        }
+
+        function togglePasswordVisibility(inputId, buttonEl) {
+            const input = document.getElementById(inputId);
+            const icon = buttonEl.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        function handleSignup() {
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            alert('Account created successfully! Please login.');
+            window.location.href = 'login.html';
+        }
+
+        (function init() {
+            if (localStorage.getItem('theme') === 'dark') {
+                htmlEl.classList.add('dark');
+                applyThemeIcons('dark');
+            } else {
+                applyThemeIcons('light');
+            }
+            const savedDir = localStorage.getItem('dir');
+            if (savedDir) bodyEl.setAttribute('dir', savedDir);
+        })();
+    </script>
+</body>
+
+</html>
