@@ -44,6 +44,7 @@
         .text-primary-text { color: var(--color-primary-text); }
         .text-secondary-text { color: var(--color-secondary-text); }
         .text-accent { color: var(--color-accent); }
+        .hover\:text-accent:hover { color: var(--color-accent) !important; }
         .text-accent-light { color: var(--color-accent-light); }
         .bg-background { background-color: var(--color-background); }
         .bg-accent { background-color: var(--color-accent); }
@@ -164,11 +165,12 @@
             </div>
 
             <!-- 404 Illustration -->
-            <div class="mb-8 relative">
-                <div class="text-[120px] sm:text-[160px] font-black leading-none text-accent/20 select-none">404</div>
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <i class="fa-solid fa-hand-holding-heart text-6xl sm:text-7xl text-accent error-illustration"></i>
+            <div class="mb-10 flex items-center justify-center gap-2 sm:gap-4 text-accent select-none">
+                <span class="text-[120px] sm:text-[160px] font-black leading-none drop-shadow-md">4</span>
+                <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-accent/10 flex items-center justify-center shadow-inner border border-accent/20">
+                    <i class="fa-solid fa-hand-holding-heart text-[70px] sm:text-[90px] error-illustration"></i>
                 </div>
+                <span class="text-[120px] sm:text-[160px] font-black leading-none drop-shadow-md">4</span>
             </div>
 
             <h1 class="text-3xl sm:text-4xl font-bold text-primary-text mb-4">Page Not Found</h1>
