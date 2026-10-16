@@ -245,25 +245,113 @@
     </header>
 
         <main class="flex-grow">
-       <!-- Section 1: Hero Section (Same Layout Structure as Home 1) -->
-<section style="background-image: url('assets/a9.webp');" class="relative py-32 lg:py-48 overflow-hidden bg-cover bg-center">
-      <div class="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
-        <!-- Centered Headings -->
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-extrabold text-white mb-6 leading-tight max-w-4xl">
-            Empowering Your <span class="text-accent">Fertility Journey</span> with Compassion
-        </h1>
-        <p class="text-lg md:text-xl text-gray-200 max-w-2xl mb-10">
-            Comprehensive fertility diagnostics, holistic wellness, and advanced reproductive medicine tailored to help you build the family of your dreams.
-        </p>
-        
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-0 w-full">
-            <a href="contact.html" class="btn-primary px-8 py-3.5 rounded-xl font-bold text-lg w-full sm:w-auto text-center shadow-lg">Start Your Journey</a>
-            <a href="treatments.html" class="btn-cta-white px-8 py-3.5 rounded-xl font-bold text-lg w-full sm:w-auto text-center">Explore Fertility Options</a>
-        </div>
+       <!-- Section 1: Hero Section (Redesigned Distinct Split Layout for Home 2) -->
+<section class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden bg-background border-b border-border">
+    <!-- Ambient Background Decorative Glows -->
+    <div class="absolute top-10 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none -z-0"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-accent-light/10 rounded-full blur-3xl pointer-events-none -z-0"></div>
 
-        
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            <!-- Left Column: Content, CTAs & Key Metrics -->
+            <div class="lg:col-span-7 flex flex-col items-start text-left rtl:text-right">
+                
+                <!-- Tag Badge -->
+                <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-accent/10 border border-accent/20 text-accent mb-6 shadow-sm">
+                    <span class="flex h-2 w-2 rounded-full bg-accent animate-ping"></span>
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    <span>Next-Generation Reproductive Medicine</span>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-primary-text mb-6 leading-[1.15] tracking-tight">
+                    Empowering Your <span class="text-accent">Fertility Journey</span> with Compassion
+                </h1>
+
+                <!-- Subtitle / Description -->
+                <p class="text-lg md:text-xl text-secondary-text mb-8 max-w-2xl leading-relaxed">
+                    Comprehensive fertility diagnostics, holistic wellness, and advanced reproductive medicine tailored to help you build the family of your dreams.
+                </p>
+                
+                <!-- CTA Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10 w-full sm:w-auto">
+                    <a href="contact.html" class="btn-primary px-8 py-3.5 rounded-xl font-bold text-base sm:text-lg text-center shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group">
+                        <span>Start Your Journey</span>
+                        <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1"></i>
+                    </a>
+                    <a href="treatments.html" class="btn-outline px-8 py-3.5 rounded-xl font-bold text-base sm:text-lg text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-compass text-accent"></i>
+                        <span>Explore Fertility Options</span>
+                    </a>
+                </div>
+
+                <!-- Trust Metrics / Clinical Highlights -->
+                <div class="w-full pt-8 border-t border-border grid grid-cols-3 gap-4 sm:gap-6">
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-accent font-serif">82%</div>
+                        <div class="text-xs sm:text-sm text-secondary-text mt-1">Clinical IVF Rate</div>
+                    </div>
+                    <div class="border-x border-border px-3 sm:px-6">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-primary-text font-serif">12,000+</div>
+                        <div class="text-xs sm:text-sm text-secondary-text mt-1">Miracle Babies</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-accent-light font-serif">25+</div>
+                        <div class="text-xs sm:text-sm text-secondary-text mt-1">Years of Care</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Visual Frame with Floating Engagement Badges -->
+            <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
+                <div class="relative w-full max-w-md sm:max-w-lg lg:max-w-none">
+                    
+                    <!-- Decorative Backdrop Glow Box -->
+                    <div class="absolute -inset-3 bg-custom-gradient rounded-3xl opacity-20 blur-xl"></div>
+                    
+                    <!-- Main Hero Image Frame -->
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-border bg-background">
+                        <img src="assets/a9.webp" alt="Doctor consulting with couple about fertility ultrasound" class="w-full h-[380px] sm:h-[460px] lg:h-[500px] object-cover hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white text-xs sm:text-sm font-medium flex items-center justify-between">
+                            <span class="bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center gap-2">
+                                <i class="fa-solid fa-stethoscope text-accent"></i>
+                                Comprehensive Diagnostics
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge 1 (Top Left): Award / Success Rate -->
+                    <div class="absolute -top-4 -left-3 sm:-top-5 sm:-left-5 bg-background/95 backdrop-blur-md border border-border p-3 sm:p-4 rounded-2xl shadow-xl flex items-center gap-3 z-20">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-custom-gradient flex items-center justify-center text-white text-base sm:text-lg shadow-md shrink-0">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div>
+                            <div class="text-[11px] sm:text-xs uppercase tracking-wider font-semibold text-secondary-text">Recognized Care</div>
+                            <div class="text-xs sm:text-sm font-bold text-primary-text">Top Fertility Clinic 2026</div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge 2 (Bottom Right): Doctor Support -->
+                    <div class="absolute -bottom-5 -right-3 sm:-bottom-6 sm:-right-5 bg-background/95 backdrop-blur-md border border-border p-3 sm:p-4 rounded-2xl shadow-xl flex items-center gap-3 z-20">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-accent-light/15 border border-accent-light/30 text-accent-light flex items-center justify-center text-lg sm:text-xl shrink-0">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <div>
+                            <div class="text-[11px] sm:text-xs text-secondary-text flex items-center gap-1.5 font-medium">
+                                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                Available Today
+                            </div>
+                            <div class="text-xs sm:text-sm font-bold text-primary-text">Personalized Care Plan</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
 
@@ -280,7 +368,7 @@
 
         <!-- Content & Image -->
         <div class="w-full max-w-5xl">
-            <img src="assets/A3.png" alt="Medical professional reviewing fertility ultrasound results" class="w-full h-[300px] md:h-[400px] object-cover rounded-2xl shadow-lg mb-10 border border-border">
+            <img src="assets/ggg.jpg" alt="Medical professional reviewing fertility ultrasound results" class="w-full h-[300px] md:h-[400px] object-cover rounded-2xl shadow-lg mb-10 border border-border">
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
                 <div class="p-6 bg-background rounded-2xl shadow-sm border border-border flex flex-col items-center">
@@ -403,7 +491,7 @@
             <!-- Expert 1 -->
             <div class="flex flex-col items-center">
                 <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-accent mb-6 shadow-lg">
-                    <img src="assets/a3.webp" alt="Dr. Sarah Jenkins" class="w-full h-full object-cover">
+                    <img src="assets/12.jpg" alt="Dr. Sarah Jenkins" class="w-full h-full object-cover">
                 </div>
                 <h3 class="text-xl font-bold text-primary-text mb-1">Dr. Sarah Jenkins</h3>
                 <p class="text-accent-light font-medium mb-3">Lead Reproductive Endocrinologist</p>
@@ -413,7 +501,7 @@
             <!-- Expert 2 -->
             <div class="flex flex-col items-center">
                 <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-accent mb-6 shadow-lg">
-                    <img src="assets/vr.jpg" alt="Dr. Michael Chang" class="w-full h-full object-cover">
+                    <img src="assets/a8.jpg" alt="Dr. Michael Chang" class="w-full h-full object-cover">
                 </div>
                 <h3 class="text-xl font-bold text-primary-text mb-1">Dr. Michael Chang</h3>
                 <p class="text-accent-light font-medium mb-3">Director of Andrology</p>
@@ -423,7 +511,7 @@
             <!-- Expert 3 -->
             <div class="flex flex-col items-center">
                 <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-accent mb-6 shadow-lg">
-                    <img src="assets/a8.jpg" alt="Dr. Elena Rostova" class="w-full h-full object-cover">
+                    <img src="assets/rr.jpg" alt="Dr. Elena Rostova" class="w-full h-full object-cover">
                 </div>
                 <h3 class="text-xl font-bold text-primary-text mb-1">Dr. Elena Rostova</h3>
                 <p class="text-accent-light font-medium mb-3">Chief Embryologist</p>
@@ -437,19 +525,78 @@
     </div>
 </section>
 
-<!-- Section 6: CTA / Final Action -->
-<section class="py-24 bg-custom-gradient">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-        <!-- Centered Headings -->
-        <div class="max-w-4xl text-white">
-            <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6 text-white">Ready to Discover Your Fertility Potential?</h2>
-            <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-                Whether you are looking to start a family now or preserve your options for the future, we are here to provide clarity, care, and results.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="contact.html" class="btn-cta-white px-10 py-4 rounded-xl font-extrabold text-lg shadow-xl text-accent w-full sm:w-auto">Schedule Assessment</a>
-                <a href="about.html" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-accent px-10 py-4 rounded-xl font-bold text-lg transition duration-300 w-full sm:w-auto">Learn About Our Clinic</a>
+<!-- Section 6: Redesigned Distinct CTA (Visual Asymmetric Consultation & Treatment Path) -->
+<section class="py-20 bg-background border-t border-border relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-hover rounded-3xl border border-border p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-xl">
+            <!-- Decorative Glow -->
+            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left: Framed Consultation Image with Live Badge -->
+                <div class="lg:col-span-5 relative order-2 lg:order-1">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-border bg-background">
+                        <img src="assets/vv2.jpg" alt="Doctor providing personalized fertility guidance to couple" class="w-full h-[320px] sm:h-[380px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white text-xs font-medium flex items-center justify-between">
+                            <span class="bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                                Consultations Open This Week
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Rating Card -->
+                    <div class="absolute -bottom-4 -right-2 sm:-bottom-5 sm:-right-4 bg-background/95 backdrop-blur-md border border-border p-3.5 rounded-2xl shadow-xl flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-custom-gradient flex items-center justify-center text-white text-base shadow-md shrink-0">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-primary-text">4.9 / 5 Rating</div>
+                            <div class="text-[11px] text-secondary-text">From 850+ Miracle Families</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Content & Action Pathways -->
+                <div class="lg:col-span-7 text-left rtl:text-right order-1 lg:order-2">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-accent/10 border border-accent/20 text-accent mb-4">
+                        <i class="fa-solid fa-sparkles"></i> Personalized Family Planning
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-primary-text mb-6 leading-tight">
+                        Ready to Discover Your <span class="text-accent">Fertility Potential</span>?
+                    </h2>
+                    <p class="text-secondary-text text-base sm:text-lg mb-8 leading-relaxed">
+                        Whether you are looking to start a family now or preserve your options for the future, our clinical specialists provide compassionate clarity, individualized protocols, and industry-leading success rates.
+                    </p>
+
+                    <!-- 3-Step Milestone Indicator -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+                        <div class="p-3 bg-background rounded-xl border border-border">
+                            <div class="text-xs font-bold text-accent mb-0.5">01. Assessment</div>
+                            <div class="text-xs text-secondary-text">Diagnostic bloodwork & ultrasound</div>
+                        </div>
+                        <div class="p-3 bg-background rounded-xl border border-border">
+                            <div class="text-xs font-bold text-accent-light mb-0.5">02. Tailored Plan</div>
+                            <div class="text-xs text-secondary-text">Personalized medical roadmap</div>
+                        </div>
+                        <div class="p-3 bg-background rounded-xl border border-border">
+                            <div class="text-xs font-bold text-primary-text mb-0.5">03. Supported Care</div>
+                            <div class="text-xs text-secondary-text">Continuous care & monitoring</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                        <a href="contact.html" class="btn-primary px-8 py-4 rounded-xl font-bold text-base text-center shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group">
+                            <span>Schedule Assessment</span>
+                            <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1"></i>
+                        </a>
+                        <a href="treatments.html#pricing-packages" class="btn-outline px-8 py-4 rounded-xl font-bold text-base text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-tags text-accent"></i>
+                            <span>View Pricing & Packages</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -423,21 +423,79 @@
     </div>
 </section>
 
-<!-- Section 6: CTA / Final Action (Gradient) -->
-<section class="py-24 bg-custom-gradient">
+<!-- Section 6: Redesigned Distinct CTA (Priority Assistance & Multi-Channel Support Hub) -->
+<section class="py-20 bg-hover border-t border-border">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-        <!-- Centered Content Wrapper -->
-        <div class="bg-background/10 backdrop-blur-md p-10 md:p-14 rounded-3xl border border-white/20 shadow-2xl max-w-4xl w-full flex flex-col items-center">
-            <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6 text-white text-center">Need Immediate Assistance?</h2>
-            <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl text-center">
-                If you are a current patient experiencing a medical emergency during your treatment cycle, please contact our 24/7 on-call nurse line.
+        <!-- Header -->
+        <div class="max-w-3xl mb-12">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-accent/10 border border-accent/20 text-accent mb-4 shadow-sm">
+                <i class="fa-solid fa-headset"></i> Immediate Patient Assistance
+            </span>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary-text mb-4">
+                Need Immediate Clinical Assistance or Cycle Support?
+            </h2>
+            <p class="text-secondary-text text-base sm:text-lg">
+                Time-sensitive fertility protocols require immediate communication. Choose the dedicated support channel that best fits your immediate need.
             </p>
+        </div>
+
+        <!-- 3-Channel Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl text-left rtl:text-right">
             
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
-                <a href="tel:+18001239999" class="btn-cta-white px-10 py-4 rounded-xl font-extrabold text-lg shadow-xl text-accent w-full sm:w-auto text-center flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-phone-volume"></i> 24/7 Nurse Line
+            <!-- Channel 1: 24/7 Emergency Line -->
+            <div class="bg-background p-8 rounded-3xl border-2 border-red-500/20 shadow-md flex flex-col justify-between hover:shadow-xl transition-all duration-300">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <div class="text-xs uppercase tracking-wider font-bold text-red-500 mb-2">Active Cycle Emergency</div>
+                    <h3 class="text-xl font-bold text-primary-text mb-2">24/7 On-Call Nurse</h3>
+                    <p class="text-xs sm:text-sm text-secondary-text mb-6 leading-relaxed">
+                        For patients undergoing active ovarian stimulation, trigger timing inquiries, or post-operative questions.
+                    </p>
+                </div>
+                <a href="tel:+18005550199" class="btn-primary py-3 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+1 (800) 555-0199</span>
                 </a>
             </div>
+
+            <!-- Channel 2: WhatsApp & Quick Message -->
+            <div class="bg-background p-8 rounded-3xl border border-border shadow-md flex flex-col justify-between hover:shadow-xl transition-all duration-300">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-2xl mb-6">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="text-xs uppercase tracking-wider font-bold text-emerald-600 mb-2">Fast Digital Response</div>
+                    <h3 class="text-xl font-bold text-primary-text mb-2">WhatsApp Concierge</h3>
+                    <p class="text-xs sm:text-sm text-secondary-text mb-6 leading-relaxed">
+                        Message our intake team for swift booking questions, appointment rescheduling, and direction guidance.
+                    </p>
+                </div>
+                <a href="https://wa.me/18005550199" target="_blank" class="btn-outline py-3 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-emerald-500 text-base"></i>
+                    <span>Chat on WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- Channel 3: Patient Portal -->
+            <div class="bg-background p-8 rounded-3xl border border-border shadow-md flex flex-col justify-between hover:shadow-xl transition-all duration-300">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-accent-light/10 text-accent-light flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-laptop-medical"></i>
+                    </div>
+                    <div class="text-xs uppercase tracking-wider font-bold text-accent-light mb-2">Registered Patients</div>
+                    <h3 class="text-xl font-bold text-primary-text mb-2">Patient Dashboard</h3>
+                    <p class="text-xs sm:text-sm text-secondary-text mb-6 leading-relaxed">
+                        Access real-time lab test results, hormone levels, medication dosing calendars, and direct physician notes.
+                    </p>
+                </div>
+                <a href="userdash.html" class="btn-outline py-3 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-arrow-right-to-bracket text-accent"></i>
+                    <span>Open Patient Portal</span>
+                </a>
+            </div>
+
         </div>
     </div>
 </section>

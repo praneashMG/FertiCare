@@ -284,11 +284,14 @@
     </div>
 </section>
 
-<!-- Section 3: Core Fertility Treatments (Card Grid) -->
+<!-- Section 3: Core Fertility Treatments (Enhanced Image Grid) -->
 <section id="core-treatments" class="py-20 bg-hover">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
         <!-- Centered Headings -->
         <div class="max-w-3xl mb-16">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-accent/10 border border-accent/20 text-accent mb-4">
+                <i class="fa-solid fa-stethoscope"></i> World-Class Care Plans
+            </span>
             <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary-text mb-4">Our Primary Treatments</h2>
             <p class="text-secondary-text text-lg">
                 Evidence-based reproductive medicine designed to maximize your chances of a successful, healthy conception.
@@ -296,36 +299,100 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
-            <!-- Treatment 1 -->
-            <div class="bg-background p-10 rounded-3xl border border-border shadow-sm flex flex-col items-center text-center group hover:shadow-lg transition-all duration-300">
-                <i class="fa-solid fa-microscope text-5xl text-accent mb-6 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-2xl font-bold text-primary-text mb-3">In Vitro Fertilization (IVF)</h3>
-                <p class="text-secondary-text mb-6">Eggs are retrieved from the ovaries and fertilized by sperm in our advanced laboratory, then carefully transferred into the uterus.</p>
-                <a href="contact.html" class="text-accent font-bold hover:underline mt-auto">Discuss IVF Options →</a>
+            <!-- Treatment 1: IVF -->
+            <div class="bg-background rounded-3xl border border-border shadow-sm flex flex-col text-left rtl:text-right overflow-hidden group hover:shadow-xl transition-all duration-300">
+                <div class="relative h-56 w-full overflow-hidden">
+                    <img src="assets/a0.jpg" alt="In Vitro Fertilization laboratory procedure" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-background/95 backdrop-blur-md text-xs font-semibold px-3 py-1.5 rounded-full text-accent border border-border shadow-sm">
+                        <i class="fa-solid fa-star mr-1"></i> Highest Success Rate
+                    </span>
+                    <span class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 text-white text-xs font-medium flex items-center gap-1.5">
+                        <i class="fa-solid fa-microscope text-accent"></i> Advanced ICSI & Culturing
+                    </span>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-bold text-primary-text mb-3">In Vitro Fertilization (IVF)</h3>
+                    <p class="text-secondary-text mb-6 leading-relaxed">Eggs are retrieved from the ovaries and fertilized by sperm in our advanced laboratory, then carefully transferred into the uterus.</p>
+                    <div class="mt-auto pt-4 border-t border-border flex items-center justify-between">
+                        <span class="text-xs font-medium text-secondary-text">Cycle Duration: 2-3 Weeks</span>
+                        <a href="contact.html" class="text-accent font-bold hover:underline inline-flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                            Discuss IVF Options <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Treatment 2 -->
-            <div class="bg-background p-10 rounded-3xl border border-border shadow-sm flex flex-col items-center text-center group hover:shadow-lg transition-all duration-300">
-                <i class="fa-solid fa-syringe text-5xl text-accent-light mb-6 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-2xl font-bold text-primary-text mb-3">Intrauterine Insemination (IUI)</h3>
-                <p class="text-secondary-text mb-6">A minimally invasive procedure where specially washed and concentrated sperm is placed directly into the uterus during ovulation.</p>
-                <a href="contact.html" class="text-accent-light font-bold hover:underline mt-auto">Discuss IUI Options →</a>
+            <!-- Treatment 2: IUI -->
+            <div class="bg-background rounded-3xl border border-border shadow-sm flex flex-col text-left rtl:text-right overflow-hidden group hover:shadow-xl transition-all duration-300">
+                <div class="relative h-56 w-full overflow-hidden">
+                    <img src="assets/a4.webp" alt="Doctor explaining IUI reproductive options" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-background/95 backdrop-blur-md text-xs font-semibold px-3 py-1.5 rounded-full text-accent-light border border-border shadow-sm">
+                        <i class="fa-solid fa-leaf mr-1"></i> Minimally Invasive
+                    </span>
+                    <span class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 text-white text-xs font-medium flex items-center gap-1.5">
+                        <i class="fa-solid fa-user-doctor text-accent-light"></i> Natural & Gentle Care
+                    </span>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-bold text-primary-text mb-3">Intrauterine Insemination (IUI)</h3>
+                    <p class="text-secondary-text mb-6 leading-relaxed">A minimally invasive procedure where specially washed and concentrated sperm is placed directly into the uterus during ovulation.</p>
+                    <div class="mt-auto pt-4 border-t border-border flex items-center justify-between">
+                        <span class="text-xs font-medium text-secondary-text">Cycle Duration: 1 Month</span>
+                        <a href="contact.html" class="text-accent-light font-bold hover:underline inline-flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                            Discuss IUI Options <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Treatment 3 -->
-            <div class="bg-background p-10 rounded-3xl border border-border shadow-sm flex flex-col items-center text-center group hover:shadow-lg transition-all duration-300">
-                <i class="fa-regular fa-snowflake text-5xl text-accent-light mb-6 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-2xl font-bold text-primary-text mb-3">Fertility Preservation</h3>
-                <p class="text-secondary-text mb-6">Advanced egg and sperm freezing (vitrification) allows you to pause your biological clock and preserve your reproductive options for the future.</p>
-                <a href="contact.html" class="text-accent-light font-bold hover:underline mt-auto">Learn About Freezing →</a>
+            <!-- Treatment 3: Fertility Preservation -->
+            <div class="bg-background rounded-3xl border border-border shadow-sm flex flex-col text-left rtl:text-right overflow-hidden group hover:shadow-xl transition-all duration-300">
+                <div class="relative h-56 w-full overflow-hidden">
+                    <img src="assets/vr.jpg" alt="Embryology cryopreservation and vitrification laboratory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-background/95 backdrop-blur-md text-xs font-semibold px-3 py-1.5 rounded-full text-accent-light border border-border shadow-sm">
+                        <i class="fa-regular fa-snowflake mr-1"></i> Egg & Sperm Vitrification
+                    </span>
+                    <span class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 text-white text-xs font-medium flex items-center gap-1.5">
+                        <i class="fa-solid fa-shield-halved text-accent-light"></i> 99% Post-Thaw Survival
+                    </span>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-bold text-primary-text mb-3">Fertility Preservation</h3>
+                    <p class="text-secondary-text mb-6 leading-relaxed">Advanced egg and sperm freezing (vitrification) allows you to pause your biological clock and preserve your reproductive options for the future.</p>
+                    <div class="mt-auto pt-4 border-t border-border flex items-center justify-between">
+                        <span class="text-xs font-medium text-secondary-text">Preservation: Long-term / 10+ Yrs</span>
+                        <a href="contact.html" class="text-accent-light font-bold hover:underline inline-flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                            Learn About Freezing <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Treatment 4 -->
-            <div class="bg-background p-10 rounded-3xl border border-border shadow-sm flex flex-col items-center text-center group hover:shadow-lg transition-all duration-300">
-                <i class="fa-solid fa-people-carry-box text-5xl text-accent mb-6 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-2xl font-bold text-primary-text mb-3">Third-Party Reproduction</h3>
-                <p class="text-secondary-text mb-6">Comprehensive programs including egg donation, sperm donation, and gestational surrogacy, guided by expert medical and legal teams.</p>
-                <a href="contact.html" class="text-accent font-bold hover:underline mt-auto">Explore Donor Programs →</a>
+            <!-- Treatment 4: Third-Party Reproduction -->
+            <div class="bg-background rounded-3xl border border-border shadow-sm flex flex-col text-left rtl:text-right overflow-hidden group hover:shadow-xl transition-all duration-300">
+                <div class="relative h-56 w-full overflow-hidden">
+                    <img src="assets/m.jpg" alt="Surrogacy and donor reproductive guidance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-background/95 backdrop-blur-md text-xs font-semibold px-3 py-1.5 rounded-full text-accent border border-border shadow-sm">
+                        <i class="fa-solid fa-hand-holding-heart mr-1"></i> Donor & Surrogacy Support
+                    </span>
+                    <span class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 text-white text-xs font-medium flex items-center gap-1.5">
+                        <i class="fa-solid fa-scale-balanced text-accent"></i> Full Legal & Medical Guidance
+                    </span>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-bold text-primary-text mb-3">Third-Party Reproduction</h3>
+                    <p class="text-secondary-text mb-6 leading-relaxed">Comprehensive programs including egg donation, sperm donation, and gestational surrogacy, guided by expert medical and legal teams.</p>
+                    <div class="mt-auto pt-4 border-t border-border flex items-center justify-between">
+                        <span class="text-xs font-medium text-secondary-text">Screened Donors & Surrogates</span>
+                        <a href="contact.html" class="text-accent font-bold hover:underline inline-flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                            Explore Donor Programs <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -409,20 +476,264 @@
     </div>
 </section>
 
-<!-- Section 6: CTA / Final Action -->
-<section class="py-24 bg-custom-gradient">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-        <!-- Centered Headings -->
-        <div class="max-w-4xl text-white">
-            <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6 text-white">Your Treatment Journey Starts Here</h2>
-            <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-                Do not navigate infertility alone. Speak directly with our medical specialists to outline a customized, affordable, and effective treatment plan.
-            </p>
+<!-- Section 6: Clinic Quality Standards & Cleanroom Embryology -->
+<section class="py-20 bg-background border-t border-border">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="contact.html" class="btn-cta-white px-10 py-4 rounded-xl font-extrabold text-lg shadow-xl text-accent w-full sm:w-auto">Schedule a Consultation</a>
-                <a href="doctors.html" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-accent px-10 py-4 rounded-xl font-bold text-lg transition duration-300 w-full sm:w-auto">Meet Our Specialists</a>
+            <div class="lg:col-span-6 order-2 lg:order-1">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-accent-light/10 border border-accent-light/20 text-accent-light mb-4">
+                    <i class="fa-solid fa-certificate"></i> Clinical Accreditation & Lab Safety
+                </span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary-text mb-6">
+                    Behind the Success: Our Certified Cleanroom Lab
+                </h2>
+                <p class="text-secondary-text text-base md:text-lg mb-8 leading-relaxed">
+                    Embryo development requires microscopic precision in an environment that faithfully mimics the maternal womb. Our ISO Class 5 cleanroom embryology suite incorporates the strictest clinical benchmarks in modern reproductive science.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="p-5 bg-hover rounded-2xl border border-border">
+                        <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center text-lg mb-3">
+                            <i class="fa-solid fa-wind"></i>
+                        </div>
+                        <h4 class="font-bold text-primary-text mb-1.5 text-base">VOC & HEPA Air Lock</h4>
+                        <p class="text-xs text-secondary-text leading-relaxed">Continuous positive pressure filtration removing volatile compounds and airborne particulates.</p>
+                    </div>
+
+                    <div class="p-5 bg-hover rounded-2xl border border-border">
+                        <div class="w-10 h-10 rounded-xl bg-accent-light/10 text-accent-light flex items-center justify-center text-lg mb-3">
+                            <i class="fa-solid fa-fingerprint"></i>
+                        </div>
+                        <h4 class="font-bold text-primary-text mb-1.5 text-base">RFID Electronic Witnessing</h4>
+                        <p class="text-xs text-secondary-text leading-relaxed">Automated barcoding ensures 100% zero-error identification across every egg, sperm, and embryo sample.</p>
+                    </div>
+
+                    <div class="p-5 bg-hover rounded-2xl border border-border">
+                        <div class="w-10 h-10 rounded-xl bg-accent-light/10 text-accent-light flex items-center justify-center text-lg mb-3">
+                            <i class="fa-solid fa-temperature-arrow-up"></i>
+                        </div>
+                        <h4 class="font-bold text-primary-text mb-1.5 text-base">Tri-Gas Benchtop Incubators</h4>
+                        <p class="text-xs text-secondary-text leading-relaxed">Individual low-oxygen culture chambers preventing environmental shock and maximizing blastocyst yields.</p>
+                    </div>
+
+                    <div class="p-5 bg-hover rounded-2xl border border-border">
+                        <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center text-lg mb-3">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h4 class="font-bold text-primary-text mb-1.5 text-base">CAP & SART Accredited</h4>
+                        <p class="text-xs text-secondary-text leading-relaxed">Consistently audited laboratory benchmarks exceeding national clinical average success benchmarks.</p>
+                    </div>
+                </div>
             </div>
+
+            <div class="lg:col-span-6 order-1 lg:order-2">
+                <div class="relative mx-auto max-w-md lg:max-w-none">
+                    <div class="absolute -inset-2 bg-custom-gradient rounded-3xl opacity-20 blur-xl"></div>
+                    <div class="relative rounded-3xl overflow-hidden shadow-xl border border-border">
+                        <img src="assets/b1.jpg" alt="FertiCare cleanroom embryology workstation and lab specialists" class="w-full h-[380px] sm:h-[460px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white">
+                            <div class="inline-flex items-center gap-2 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/15 text-xs font-semibold mb-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Certified Cleanroom Grade A
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Precision Embryology Workstation</h3>
+                            <p class="text-xs text-gray-200 mt-1">Dual-operator stereo microscopes with climate-controlled heated working stages.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Section 7: Transparent Treatment Pricing & Packages -->
+<section id="pricing-packages" class="py-20 bg-hover border-t border-border">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+        <!-- Section Header -->
+        <div class="max-w-3xl mb-16">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-accent/10 border border-accent/20 text-accent mb-4">
+                <i class="fa-solid fa-hand-holding-dollar"></i> No Hidden Fees
+            </span>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary-text mb-4">
+                Transparent Treatment Pricing & Packages
+            </h2>
+            <p class="text-secondary-text text-lg">
+                We believe in financial clarity from day one. Explore our all-inclusive treatment packages designed with flexible financing support.
+            </p>
+        </div>
+
+        <!-- Pricing Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full max-w-6xl text-left rtl:text-right items-stretch">
+            
+            <!-- Tier 1: Natural / Mild Cycle -->
+            <div class="bg-background rounded-3xl border border-border p-8 shadow-sm flex flex-col justify-between hover:shadow-lg transition-all duration-300">
+                <div>
+                    <div class="text-xs uppercase tracking-wider font-semibold text-secondary-text mb-2">Gentle Protocol</div>
+                    <h3 class="text-2xl font-bold text-primary-text mb-3">Essential IVF</h3>
+                    <p class="text-secondary-text text-sm mb-6">Designed for patients with good ovarian reserve seeking gentle stimulation and minimal medication exposure.</p>
+                    
+                    <div class="flex items-baseline gap-1.5 mb-6 pb-6 border-b border-border">
+                        <span class="text-4xl font-extrabold text-primary-text font-serif">$4,800</span>
+                        <span class="text-xs text-secondary-text font-medium">/ complete cycle</span>
+                    </div>
+
+                    <div class="text-xs font-bold uppercase tracking-wider text-primary-text mb-3">Package Inclusions:</div>
+                    <ul class="space-y-3 text-sm text-secondary-text mb-8">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent mt-0.5 shrink-0 text-sm"></i>
+                            <span>Cycle monitoring ultrasound & bloodwork</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent mt-0.5 shrink-0 text-sm"></i>
+                            <span>Egg retrieval under local anesthetic</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent mt-0.5 shrink-0 text-sm"></i>
+                            <span>Standard laboratory fertilization</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent mt-0.5 shrink-0 text-sm"></i>
+                            <span>Single fresh blastocyst embryo transfer</span>
+                        </li>
+                    </ul>
+                </div>
+                <a href="contact.html" class="btn-outline text-center py-3.5 rounded-xl font-bold text-sm block">Choose Essential Plan</a>
+            </div>
+
+            <!-- Tier 2: Comprehensive Advanced IVF (Highlighted / Most Popular) -->
+            <div class="bg-background rounded-3xl border-2 border-accent p-8 shadow-xl flex flex-col justify-between relative transform lg:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+                <span class="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-custom-gradient text-white text-xs font-bold uppercase tracking-wider py-1 px-4 rounded-full shadow-md">
+                    Most Chosen Package
+                </span>
+                <div>
+                    <div class="text-xs uppercase tracking-wider font-semibold text-accent mb-2">All-Inclusive Care</div>
+                    <h3 class="text-2xl font-bold text-primary-text mb-3">Advanced IVF + ICSI</h3>
+                    <p class="text-secondary-text text-sm mb-6">Our flagship complete package including high-precision ICSI, blastocyst cultivation, and cryo-storage.</p>
+                    
+                    <div class="flex items-baseline gap-1.5 mb-6 pb-6 border-b border-border">
+                        <span class="text-4xl font-extrabold text-accent font-serif">$8,500</span>
+                        <span class="text-xs text-secondary-text font-medium">/ complete cycle</span>
+                    </div>
+
+                    <div class="text-xs font-bold uppercase tracking-wider text-primary-text mb-3">Package Inclusions:</div>
+                    <ul class="space-y-3 text-sm text-secondary-text mb-8">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent mt-0.5 shrink-0 text-sm"></i>
+                            <span class="font-medium text-primary-text">Unlimited cycle monitoring & ultrasound scans</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent mt-0.5 shrink-0 text-sm"></i>
+                            <span>Egg retrieval with certified anesthesiologist</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent mt-0.5 shrink-0 text-sm"></i>
+                            <span>High-magnification ICSI microinjection</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent mt-0.5 shrink-0 text-sm"></i>
+                            <span>Assisted laser hatching & blastocyst culture</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent mt-0.5 shrink-0 text-sm"></i>
+                            <span>1 Year complimentary embryo vitrification storage</span>
+                        </li>
+                    </ul>
+                </div>
+                <a href="contact.html" class="btn-primary text-center py-3.5 rounded-xl font-bold text-sm block shadow-lg">Choose Advanced Plan</a>
+            </div>
+
+            <!-- Tier 3: Multi-Cycle Program -->
+            <div class="bg-background rounded-3xl border border-border p-8 shadow-sm flex flex-col justify-between hover:shadow-lg transition-all duration-300">
+                <div>
+                    <div class="text-xs uppercase tracking-wider font-semibold text-secondary-text mb-2">Maximum Assurance</div>
+                    <h3 class="text-2xl font-bold text-primary-text mb-3">Multi-Cycle Guarantee</h3>
+                    <p class="text-secondary-text text-sm mb-6">Comprehensive peace-of-mind package with multiple retrieval attempts and complete genetic testing.</p>
+                    
+                    <div class="flex items-baseline gap-1.5 mb-6 pb-6 border-b border-border">
+                        <span class="text-4xl font-extrabold text-accent-light font-serif">$14,200</span>
+                        <span class="text-xs text-secondary-text font-medium">/ 2 full cycles</span>
+                    </div>
+
+                    <div class="text-xs font-bold uppercase tracking-wider text-primary-text mb-3">Package Inclusions:</div>
+                    <ul class="space-y-3 text-sm text-secondary-text mb-8">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent-light mt-0.5 shrink-0 text-sm"></i>
+                            <span>Up to 2 fresh retrievals + unlimited frozen transfers</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent-light mt-0.5 shrink-0 text-sm"></i>
+                            <span>Full PGT-A chromosomal embryo screening</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent-light mt-0.5 shrink-0 text-sm"></i>
+                            <span>2 Years embryo & sperm cryogenic banking</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-accent-light mt-0.5 shrink-0 text-sm"></i>
+                            <span>Partial refund program if clinical goals are not reached</span>
+                        </li>
+                    </ul>
+                </div>
+                <a href="contact.html" class="btn-outline text-center py-3.5 rounded-xl font-bold text-sm block">Learn About Guarantee</a>
+            </div>
+
+        </div>
+
+        <!-- Financial Reassurance Pill / Financing Banner -->
+        <div class="mt-12 bg-background p-6 sm:p-8 rounded-2xl border border-border shadow-sm max-w-4xl w-full flex flex-col sm:flex-row items-center justify-between gap-6 text-left rtl:text-right">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center text-2xl shrink-0">
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary-text text-base">0% APR Monthly Financing Available</h4>
+                    <p class="text-xs sm:text-sm text-secondary-text">Starting as low as $295/month through our dedicated fertility lending partners with quick pre-approval.</p>
+                </div>
+            </div>
+            <a href="contact.html" class="btn-primary text-xs sm:text-sm px-6 py-3 rounded-xl font-bold shrink-0 text-center w-full sm:w-auto shadow-md">
+                Check Eligibility
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Section 8: CTA / Interactive 2-Minute Treatment Matcher -->
+<section class="py-20 bg-background border-t border-border relative overflow-hidden">
+    <div class="absolute -right-20 top-1/2 -translate-y-1/2 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="bg-gradient-to-br from-pink-500/10 via-background to-blue-500/10 border-2 border-accent/20 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-10">
+            
+            <div class="max-w-2xl text-left rtl:text-right">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-accent text-white mb-4 shadow-sm">
+                    <i class="fa-solid fa-compass"></i> Treatment Navigator
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-primary-text mb-4 leading-tight">
+                    Not Sure Which Treatment Is Right for You?
+                </h2>
+                <p class="text-secondary-text text-base sm:text-lg mb-6 leading-relaxed">
+                    Take our 2-minute personalized fertility assessment. Answer a few brief confidential questions to receive clinician-reviewed treatment recommendations tailored to your goals.
+                </p>
+                
+                <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-secondary-text">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-clock text-accent"></i> Takes Only 2 Minutes</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-lock text-accent"></i> 100% Anonymous & Secure</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-user-doctor text-accent"></i> Specialist Reviewed</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row lg:flex-col gap-4 w-full sm:w-auto shrink-0">
+                <a href="contact.html" class="btn-primary px-8 py-4 rounded-xl font-bold text-base text-center shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group">
+                    <span>Start Free Assessment</span>
+                    <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1"></i>
+                </a>
+                <a href="doctors.html" class="btn-outline px-8 py-4 rounded-xl font-bold text-base text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Consult a Specialist</span>
+                </a>
+            </div>
+
         </div>
     </div>
 </section>
