@@ -159,6 +159,9 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
+        .btn-outline:hover i {
+            color: inherit !important;
+        }
         .btn-outline:hover {
             background: var(--color-accent);
             color: white;
@@ -168,7 +171,10 @@
             color: var(--color-accent);
             border-color: var(--color-accent);
         }
-        html[data-theme='dark'] .btn-outline:hover {
+        html[data-theme='dark'] .btn-outline:hover i {
+            color: inherit !important;
+        }
+        .btn-outline:hover {
             background: var(--color-accent);
             color: #000;
         }
@@ -183,6 +189,47 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         }
+    
+        /* Hero Floating Cards - Solid High Contrast */
+        .hero-floating-card {
+            background-color: #FFFFFF !important;
+            border: 1.5px solid #E2E8F0 !important;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+        }
+        html[data-theme='dark'] .hero-floating-card {
+            background-color: #0F172A !important;
+            border: 1.5px solid #334155 !important;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6) !important;
+        }
+        .hero-card-title {
+            color: #0F172A !important;
+        }
+        html[data-theme='dark'] .hero-card-title {
+            color: #FFFFFF !important;
+        }
+        .hero-card-sub {
+            color: #64748B !important;
+        }
+        html[data-theme='dark'] .hero-card-sub {
+            color: #94A3B8 !important;
+        }
+        .hero-card-icon-blue {
+            background-color: #EFF6FF !important;
+            border: 1px solid #BFDBFE !important;
+            color: #2563EB !important;
+        }
+        html[data-theme='dark'] .hero-card-icon-blue {
+            background-color: #1E293B !important;
+            border: 1px solid #3B82F6 !important;
+            color: #60A5FA !important;
+        }
+        .hero-badge-available {
+            color: #059669 !important;
+        }
+        html[data-theme='dark'] .hero-badge-available {
+            color: #34D399 !important;
+        }
+
     </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
@@ -324,27 +371,27 @@
                     </div>
 
                     <!-- Floating Badge 1 (Top Left): Award / Success Rate -->
-                    <div class="absolute -top-4 -left-3 sm:-top-5 sm:-left-5 bg-background/95 backdrop-blur-md border border-border p-3 sm:p-4 rounded-2xl shadow-xl flex items-center gap-3 z-20">
+                    <div class="hero-floating-card absolute -top-4 -left-3 sm:-top-5 sm:-left-5 p-3.5 sm:p-4 rounded-2xl flex items-center gap-3.5 z-20 transition-transform duration-300 hover:scale-105">
                         <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-custom-gradient flex items-center justify-center text-white text-base sm:text-lg shadow-md shrink-0">
                             <i class="fa-solid fa-trophy"></i>
                         </div>
                         <div>
-                            <div class="text-[11px] sm:text-xs uppercase tracking-wider font-semibold text-secondary-text">Recognized Care</div>
-                            <div class="text-xs sm:text-sm font-bold text-primary-text">Top Fertility Clinic 2026</div>
+                            <div class="hero-card-sub text-[11px] sm:text-xs uppercase tracking-wider font-bold">Recognized Care</div>
+                            <div class="hero-card-title text-xs sm:text-sm font-bold tracking-tight">Top Fertility Clinic 2026</div>
                         </div>
                     </div>
 
                     <!-- Floating Badge 2 (Bottom Right): Doctor Support -->
-                    <div class="absolute -bottom-5 -right-3 sm:-bottom-6 sm:-right-5 bg-background/95 backdrop-blur-md border border-border p-3 sm:p-4 rounded-2xl shadow-xl flex items-center gap-3 z-20">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-accent-light/15 border border-accent-light/30 text-accent-light flex items-center justify-center text-lg sm:text-xl shrink-0">
+                    <div class="hero-floating-card absolute -bottom-5 -right-3 sm:-bottom-6 sm:-right-5 p-3.5 sm:p-4 rounded-2xl flex items-center gap-3.5 z-20 transition-transform duration-300 hover:scale-105">
+                        <div class="hero-card-icon-blue w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-lg sm:text-xl shrink-0 shadow-sm">
                             <i class="fa-solid fa-user-doctor"></i>
                         </div>
                         <div>
-                            <div class="text-[11px] sm:text-xs text-secondary-text flex items-center gap-1.5 font-medium">
+                            <div class="hero-badge-available text-[11px] sm:text-xs flex items-center gap-1.5 font-bold">
                                 <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                                 Available Today
                             </div>
-                            <div class="text-xs sm:text-sm font-bold text-primary-text">Personalized Care Plan</div>
+                            <div class="hero-card-title text-xs sm:text-sm font-bold tracking-tight">Personalized Care Plan</div>
                         </div>
                     </div>
 
@@ -547,13 +594,13 @@
                     </div>
                     
                     <!-- Floating Rating Card -->
-                    <div class="absolute -bottom-4 -right-2 sm:-bottom-5 sm:-right-4 bg-background/95 backdrop-blur-md border border-border p-3.5 rounded-2xl shadow-xl flex items-center gap-3">
+                    <div class="hero-floating-card absolute -bottom-4 -right-2 sm:-bottom-5 sm:-right-4 p-3.5 sm:p-4 rounded-2xl flex items-center gap-3.5 z-20 transition-transform duration-300 hover:scale-105">
                         <div class="w-10 h-10 rounded-xl bg-custom-gradient flex items-center justify-center text-white text-base shadow-md shrink-0">
                             <i class="fa-solid fa-star"></i>
                         </div>
                         <div>
-                            <div class="text-xs font-bold text-primary-text">4.9 / 5 Rating</div>
-                            <div class="text-[11px] text-secondary-text">From 850+ Miracle Families</div>
+                            <div class="hero-card-title text-xs sm:text-sm font-bold tracking-tight">4.9 / 5 Rating</div>
+                            <div class="hero-card-sub text-[11px] sm:text-xs font-medium">From 850+ Miracle Families</div>
                         </div>
                     </div>
                 </div>

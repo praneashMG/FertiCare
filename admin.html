@@ -73,12 +73,18 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
+        .btn-outline:hover i {
+            color: inherit !important;
+        }
         .btn-outline:hover {
             background: var(--color-accent);
             color: white;
             box-shadow: 0 4px 12px rgba(236,72,153,0.25);
         }
-        html[data-theme='dark'] .btn-outline:hover {
+        html[data-theme='dark'] .btn-outline:hover i {
+            color: inherit !important;
+        }
+        .btn-outline:hover {
             background: var(--color-accent);
             color: #000;
         }

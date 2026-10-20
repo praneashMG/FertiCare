@@ -159,6 +159,9 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
+        .btn-outline:hover i {
+            color: inherit !important;
+        }
         .btn-outline:hover {
             background: var(--color-accent);
             color: white;
@@ -168,7 +171,10 @@
             color: var(--color-accent);
             border-color: var(--color-accent);
         }
-        html[data-theme='dark'] .btn-outline:hover {
+        html[data-theme='dark'] .btn-outline:hover i {
+            color: inherit !important;
+        }
+        .btn-outline:hover {
             background: var(--color-accent);
             color: #000;
         }
@@ -472,9 +478,9 @@
                         Message our intake team for swift booking questions, appointment rescheduling, and direction guidance.
                     </p>
                 </div>
-                <a href="https://wa.me/18005550199" target="_blank" class="btn-outline py-3 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp text-emerald-500 text-base"></i>
-                    <span>Chat on WhatsApp</span>
+                <a href="https://wa.me/18005550199" target="_blank" class="group py-3 px-4 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white transition-all duration-300 shadow-sm">
+                    <i class="fab fa-whatsapp text-emerald-500 group-hover:text-white text-base transition-colors"></i>
+                    <span class="group-hover:text-white transition-colors">Chat on WhatsApp</span>
                 </a>
             </div>
 
@@ -490,9 +496,9 @@
                         Access real-time lab test results, hormone levels, medication dosing calendars, and direct physician notes.
                     </p>
                 </div>
-                <a href="userdash.html" class="btn-outline py-3 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-arrow-right-to-bracket text-accent"></i>
-                    <span>Open Patient Portal</span>
+                <a href="userdash.html" class="group btn-outline py-3 rounded-xl font-bold text-sm text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-arrow-right-to-bracket text-accent group-hover:text-white transition-colors"></i>
+                    <span class="group-hover:text-white transition-colors">Open Patient Portal</span>
                 </a>
             </div>
 

@@ -159,6 +159,9 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
+        .btn-outline:hover i {
+            color: inherit !important;
+        }
         .btn-outline:hover {
             background: var(--color-accent);
             color: white;
@@ -168,7 +171,10 @@
             color: var(--color-accent);
             border-color: var(--color-accent);
         }
-        html[data-theme='dark'] .btn-outline:hover {
+        html[data-theme='dark'] .btn-outline:hover i {
+            color: inherit !important;
+        }
+        .btn-outline:hover {
             background: var(--color-accent);
             color: #000;
         }
@@ -304,8 +310,8 @@
                 <div class="relative h-56 w-full overflow-hidden">
                     <img src="assets/a0.jpg" alt="In Vitro Fertilization laboratory procedure" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-background/95 backdrop-blur-md text-xs font-semibold px-3 py-1.5 rounded-full text-accent border border-border shadow-sm">
-                        <i class="fa-solid fa-star mr-1"></i> Highest Success Rate
+                    <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md text-xs font-bold px-3 py-1.5 rounded-full text-pink-600 dark:text-pink-400 border border-slate-200 dark:border-slate-700 shadow-md">
+                        <i class="fa-solid fa-star mr-1 text-pink-500"></i> Highest Success Rate
                     </span>
                     <span class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 text-white text-xs font-medium flex items-center gap-1.5">
                         <i class="fa-solid fa-microscope text-accent"></i> Advanced ICSI & Culturing
@@ -328,8 +334,8 @@
                 <div class="relative h-56 w-full overflow-hidden">
                     <img src="assets/a4.webp" alt="Doctor explaining IUI reproductive options" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-background/95 backdrop-blur-md text-xs font-semibold px-3 py-1.5 rounded-full text-accent-light border border-border shadow-sm">
-                        <i class="fa-solid fa-leaf mr-1"></i> Minimally Invasive
+                    <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md text-xs font-bold px-3 py-1.5 rounded-full text-blue-600 dark:text-blue-400 border border-slate-200 dark:border-slate-700 shadow-md">
+                        <i class="fa-solid fa-leaf mr-1 text-blue-500"></i> Minimally Invasive
                     </span>
                     <span class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 text-white text-xs font-medium flex items-center gap-1.5">
                         <i class="fa-solid fa-user-doctor text-accent-light"></i> Natural & Gentle Care
@@ -352,8 +358,8 @@
                 <div class="relative h-56 w-full overflow-hidden">
                     <img src="assets/vr.jpg" alt="Embryology cryopreservation and vitrification laboratory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-background/95 backdrop-blur-md text-xs font-semibold px-3 py-1.5 rounded-full text-accent-light border border-border shadow-sm">
-                        <i class="fa-regular fa-snowflake mr-1"></i> Egg & Sperm Vitrification
+                    <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md text-xs font-bold px-3 py-1.5 rounded-full text-blue-600 dark:text-blue-400 border border-slate-200 dark:border-slate-700 shadow-md">
+                        <i class="fa-regular fa-snowflake mr-1 text-blue-500"></i> Egg & Sperm Vitrification
                     </span>
                     <span class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 text-white text-xs font-medium flex items-center gap-1.5">
                         <i class="fa-solid fa-shield-halved text-accent-light"></i> 99% Post-Thaw Survival
@@ -376,8 +382,8 @@
                 <div class="relative h-56 w-full overflow-hidden">
                     <img src="assets/m.jpg" alt="Surrogacy and donor reproductive guidance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-background/95 backdrop-blur-md text-xs font-semibold px-3 py-1.5 rounded-full text-accent border border-border shadow-sm">
-                        <i class="fa-solid fa-hand-holding-heart mr-1"></i> Donor & Surrogacy Support
+                    <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md text-xs font-bold px-3 py-1.5 rounded-full text-pink-600 dark:text-pink-400 border border-slate-200 dark:border-slate-700 shadow-md">
+                        <i class="fa-solid fa-hand-holding-heart mr-1 text-pink-500"></i> Donor & Surrogacy Support
                     </span>
                     <span class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 text-white text-xs font-medium flex items-center gap-1.5">
                         <i class="fa-solid fa-scale-balanced text-accent"></i> Full Legal & Medical Guidance
